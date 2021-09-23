@@ -2,5 +2,51 @@
 @import '_variables';
 
 body {
+  display: flex;
+  flex-direction: row;
   background: $primary-background;
+}
+
+.navigation {
+  display: flex;
+  height: 100vh;
+  width: 20vw;;
+  background-color: #132F3E
+}
+
+.hotel-logo {
+  position: absolute;
+  height: 30px;
+  width: 100px;
+}
+
+.divc {
+  display: flex;
+  flex-direction: row;
+}
+
+.test1,
+.test4 {
+  height: 300px;
+  width: 32vw;
+  background-color: #EFA79A;
+  opacity: 78%;
+}
+
+.test2 {
+  height: 485px;
+  width: 39vw;
+  background-color: #3E604E;
+}
+
+.test3 {
+  height: 485px;
+  width: 25vw;
+  background-color: #FFE9BD;
+  opacity: 78%;
+}
+
+.divc {
+  display: flex;
+  flex-direction: row;
 }
