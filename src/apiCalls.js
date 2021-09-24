@@ -7,8 +7,8 @@ function getAllPermanentPatrons() {
     .catch(error => console.log(error))
 }
 
-function getSinglePermanentPatron() {
-  return fetch(`${apiEndpoint}/api/v1/customers/<id>`)
+function getSinglePermanentPatron(id) {
+  return fetch(`${apiEndpoint}/api/v1/customers/${id}`)
     .then(response => response.json())
     .then(data => data)
     .catch(error => console.log(error))
@@ -62,6 +62,5 @@ export {
   getAllRooms,
   getAllBookings,
   addNewVictIMeanClient,
-  deleteSingleBookingAsIfThatWerePossbile,
-  checkResponse
+  deleteSingleBookingAsIfThatWerePossbile
 }
