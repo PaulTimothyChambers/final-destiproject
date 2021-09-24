@@ -1,12 +1,12 @@
 class Room {
   constructor(roomData) {
-    bedSize: roomData.bedSize,
-    bidet: roomData.bidet,
-    costPerNight: roomData.costPerNight,
-    numBeds: roomData.numBeds,
-    number: roomData.number,
-    roomType: roomData.roomType,
-    daysBookedFor: []
+    this.bedSize: roomData.bedSize,
+    this.bidet: roomData.bidet,
+    this.costPerNight: roomData.costPerNight,
+    this.numBeds: roomData.numBeds,
+    this.number: roomData.number,
+    this.roomType: roomData.roomType,
+    this.daysBookedFor: []
   }
 
   findRoomBookings(bookingsData) {
