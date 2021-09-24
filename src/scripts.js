@@ -1,39 +1,39 @@
 import './css/base.scss';
-import './images/turing-logo.png'
-import './images/logo-2.png'
-import './images/bg-img-4.png'
-import {
-  getAllPermanentPatrons,
-  getSinglePermanentPatron,
-  getAllRooms,
-  getAllBookings,
-  addNewVictIMeanClient,
-  deleteSingleBookingAsIfThatWerePossbile
-} from './apiCalls';
-import RoomRepo from './classes/RoomRepo.js'
+import './images/turing-logo.png';
+import './images/logo-2.png';
+import './images/bg-img-4.png';
+import apiCalls from './apiCalls';
+import domManipulation from './dom-manipulation.js';
+import RoomRepo from './classes/RoomRepo.js';
 
-// let patron;
+window.addEventListener('load', getAllRooms);
+domManipulation.submitLogin.addEventListener('click', displayPatronDashboard);
+domManipulation.guestLoginButton.addEventListener('click', () => getSinglePatron());
 
 function getAllPatrons() {
   getAllPermanentPatrons().then(data => console.log(data));
   // getSinglePatron()
-  //may need to put these invocations inside the .then
+  // may need to put these invocations inside the .then
 }
 
-function getSinglePatron(patronID) {
-  getSinglePermanentPatron(patronID).then(data => console.log(data))
+function getSinglePatron() {
+  // need Users class holding id's and names + method to iterate through users
+  // and return an array of their id's concatenated with 'customer' (customer${id})...call that method here
+  const patronID = domManipulation.usernameField.value
+  getSinglePermanentPatron(patronID).then(data => console.log(data));
+  domManipulation.displayPatronLogin()
   // getRooms()
 }
 
-function getRooms() {
+function getAllRooms() {
   getAllRooms().then(roomsData => {
-    roomRepo = new RoomRepo(roomsData)
+    roomRepo = new RoomRepo(roomsData);
   })
   // getBookings()
 }
 
-function getBookings() {
-  getAllBookings().then(data => console.log(data))
+function getAllBookings() {
+  getAllBookings().then(data => console.log(data));
   // addVictim()
 }
 
@@ -45,5 +45,3 @@ function getBookings() {
 // function deleteBookingYeahRight() {
 //   deleteSingleBookingAsIfThatWerePossbile().then(data => console.log(data))
 // }
-
-window.addEventListener('load', getAllPatrons)
