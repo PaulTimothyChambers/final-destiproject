@@ -8,6 +8,39 @@ import {
   getAllRooms,
   getAllBookings,
   addNewVictIMeanClient,
-  deleteSingleBookingAsIfThatWerePossbile,
-  checkResponse
+  deleteSingleBookingAsIfThatWerePossbile
 } from './apiCalls';
+
+// let patron;
+
+function getAllPatrons() {
+  getAllPermanentPatrons().then(data => console.log(data));
+  getSinglePatron()
+  //may need to put these invocations inside the .then
+}
+
+function getSinglePatron(patronID) {
+  getSinglePermanentPatron(patronID).then(data => console.log(data))
+  getRooms()
+}
+
+function getRooms() {
+  getAllRooms().then(data => console.log(data))
+  getBookings()
+}
+
+function getBookings() {
+  getAllBookings().then(data => console.log(data))
+  // addVictim()
+}
+
+// function addVictim() {
+//   addNewVictIMeanClient().then(data => console.log(data))
+//   deleteBookingYeahRight()
+// }
+
+// function deleteBookingYeahRight() {
+//   deleteSingleBookingAsIfThatWerePossbile().then(data => console.log(data))
+// }
+
+window.addEventListener('load', getAllPatrons)
