@@ -6,6 +6,14 @@ class Room {
     numBeds: roomData.numBeds,
     number: roomData.number,
     roomType: roomData.roomType,
-    daysBooked: []
+    daysBookedFor: []
+  }
+
+  findRoomBookings(bookingsData) {
+    const bookedDays = bookingsData.forEach(booking => {
+      if (booking.roomNumber === this.number) {
+        this.daysBookedFor.push(booking.date);
+      }
+    })
   }
 }
