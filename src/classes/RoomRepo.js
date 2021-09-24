@@ -1,8 +1,9 @@
 import Room from './Room.js';
 
 class RoomRepo {
-  constructor(roomsData) {
-    this.rooms: roomsData;
+  constructor(roomsData, bookingsData) {
+    this.rooms = roomsData;
+    this.bookings = bookingsData;
   }
 
   findAllRoomBookings(bookingsData) {
