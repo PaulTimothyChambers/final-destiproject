@@ -10,7 +10,7 @@ class Room {
   }
 
   findSingleRoomBookings(bookingsData) {
-    const bookedDays = bookingsData.forEach(booking => {
+    bookingsData.forEach(booking => {
       if (booking.roomNumber === this.number) {
         this.daysBookedFor.push(booking.date);
       }
