@@ -11,8 +11,7 @@ class RoomRepo {
     this.rooms.forEach(room => {
       room.findSingleRoomBookings(bookingsData, this);
     })
-    this.findAllRoomBookings(bookings)
-    rooms = this.rooms
+    console.log()
   }
 
   findUserBookings(patron) {
