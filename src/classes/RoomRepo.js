@@ -13,3 +13,5 @@ class RoomRepo {
     })
   }
 }
+
+export default RoomRepo;
