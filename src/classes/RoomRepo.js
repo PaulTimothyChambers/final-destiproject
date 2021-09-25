@@ -6,11 +6,22 @@ class RoomRepo {
     this.bookings = bookingsData;
   }
 
-  findAllRoomBookings(bookingsData) {
-    this.rooms = this.rooms.map(room => new Room(room));
+  findAllRoomBookings(bookingsData, patronsData) {
+    this.rooms = this.rooms.rooms.map(room => new Room(room));
     this.rooms.forEach(room => {
-      room.findSingleRoomBookings(bookingsData);
+      room.findSingleRoomBookings(bookingsData, this);
     })
+    this.findAllRoomBookings(bookings)
+    rooms = this.rooms
+  }
+
+  findUserBookings(patron) {
+    this.bookings.bookings.forEach(booking => {
+      if (booking.userID === patron.id){
+        patron.bookings.push(booking)
+      }
+    })
+    console.log(patron)
   }
 }
 
