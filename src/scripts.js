@@ -1,6 +1,46 @@
 import './css/base.scss';
 import './images/turing-logo.png'
 import './images/logo-2.png'
+import './images/bg-img-4.png'
+import {
+  getAllPermanentPatrons,
+  getSinglePermanentPatron,
+  getAllRooms,
+  getAllBookings,
+  addNewVictIMeanClient,
+  deleteSingleBookingAsIfThatWerePossbile
+} from './apiCalls';
 
+// let patron;
 
-console.log('This is your FINAL DESTIPROJECT ... er ... GUNATION! YEAH!');
+function getAllPatrons() {
+  getAllPermanentPatrons().then(data => console.log(data));
+  getSinglePatron()
+  //may need to put these invocations inside the .then
+}
+
+function getSinglePatron(patronID) {
+  getSinglePermanentPatron(patronID).then(data => console.log(data))
+  getRooms()
+}
+
+function getRooms() {
+  getAllRooms().then(data => console.log(data))
+  getBookings()
+}
+
+function getBookings() {
+  getAllBookings().then(data => console.log(data))
+  // addVictim()
+}
+
+// function addVictim() {
+//   addNewVictIMeanClient().then(data => console.log(data))
+//   deleteBookingYeahRight()
+// }
+
+// function deleteBookingYeahRight() {
+//   deleteSingleBookingAsIfThatWerePossbile().then(data => console.log(data))
+// }
+
+window.addEventListener('load', getAllPatrons)
