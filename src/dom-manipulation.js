@@ -12,12 +12,21 @@ const bottomCard = document.getElementById('bottomCard');
 let domManipulation = {
 
   displayPatronDashboard(patron) {
-    topCard.innerHTML =
-    `<article class="">
-      <img class="" src="" alt="">
-      <p class="welcome-message">Welcome ${patron.name}</p>
-    </article>`
     domManipulation.hidePatronLogin()
+    topCard.innerHTML =
+      `<article class="welcome">
+        <img class="" src="" alt="">
+        <p class="welcome-message">Welcome ${patron.name}</p>
+      </article>`
+    // leftCard.innerHTML =
+    //   `<article class="my-bookings">
+    //     <p class="bookings"></p>
+    //     <ul class="list-my-bookings">
+    //       ${rooms.rooms.forEach(room => {
+    //
+    //       })}
+    //     </ul>
+    //   </article>`
   },
 
   hidePatronLogin() {
