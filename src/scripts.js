@@ -2,38 +2,56 @@ import './css/base.scss';
 import './images/turing-logo.png';
 import './images/logo-2.png';
 import './images/bg-img-4.png';
-import apiCalls from './apiCalls';
+import {
+  getAllPermanentPatrons,
+  getSinglePermanentPatron,
+  getAllRooms,
+  getAllBookings,
+  addNewVictIMeanClient,
+  deleteSingleBookingAsIfThatWerePossbile
+} from './apiCalls';
 import domManipulation from './dom-manipulation.js';
 import RoomRepo from './classes/RoomRepo.js';
 
-window.addEventListener('load', getAllRooms);
-domManipulation.submitLogin.addEventListener('click', displayPatronDashboard);
-domManipulation.guestLoginButton.addEventListener('click', () => getSinglePatron());
+let roomRepo;
+let patron;
 
-function getAllPatrons() {
-  getAllPermanentPatrons().then(data => console.log(data));
-  // getSinglePatron()
-  // may need to put these invocations inside the .then
+window.addEventListener('load', instantiateRooms);
+domManipulation.submitLoginInfo.addEventListener('click', parseAllPatrons);
+domManipulation.patronLoginButton.addEventListener('click', () => domManipulation.displayPatronLogin());
+
+function parseAllPatrons() {
+  getAllPermanentPatrons().then(patronsData => {
+    parseSinglePatron(patronsData);
+  })
 }
 
-function getSinglePatron() {
-  // need Users class holding id's and names + method to iterate through users
-  // and return an array of their id's concatenated with 'customer' (customer${id})...call that method here
+function parseSinglePatron(patronsData) {
   const patronID = domManipulation.usernameField.value
-  getSinglePermanentPatron(patronID).then(data => console.log(data));
-  domManipulation.displayPatronLogin()
-  // getRooms()
+  const checkOne = patronID.startsWith('customer');
+  const checkTwo = parseInt(patronID.slice(8)) > 0;
+  const checkThree = parseInt(patronID.slice(8)) <= 50;
+  const checkFour = (domManipulation.passwordField.value === 'overlook2021')
+  if (checkOne && checkTwo && checkThree && checkFour) {
+    const idToGet = patronID.slice(8);
+    console.log(idToGet);
+    getSinglePermanentPatron(idToGet).then(singlePatronData => domManipulation.displayPatronDashboard(singlePatronData));
+  } else if (!checkOne || ! checkTwo || !checkThree){
+    domManipulation.displayUsernameErrorMessage();
+  } else {
+    domManipulation.displayPasswordErrorMessage();
+  }
 }
 
-function getAllRooms() {
+function instantiateRooms() {
   getAllRooms().then(roomsData => {
     roomRepo = new RoomRepo(roomsData);
   })
   // getBookings()
 }
 
-function getAllBookings() {
-  getAllBookings().then(data => console.log(data));
+function parseAllBookings() {
+  apiCalls.getAllBookings().then(data => console.log(data));
   // addVictim()
 }
 
