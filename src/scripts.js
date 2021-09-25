@@ -10,23 +10,26 @@ import {
   addNewVictIMeanClient,
   deleteSingleBookingAsIfThatWerePossbile
 } from './apiCalls';
+import RoomRepo from './classes/RoomRepo.js'
 
 // let patron;
 
 function getAllPatrons() {
   getAllPermanentPatrons().then(data => console.log(data));
-  getSinglePatron()
+  // getSinglePatron()
   //may need to put these invocations inside the .then
 }
 
 function getSinglePatron(patronID) {
   getSinglePermanentPatron(patronID).then(data => console.log(data))
-  getRooms()
+  // getRooms()
 }
 
 function getRooms() {
-  getAllRooms().then(data => console.log(data))
-  getBookings()
+  getAllRooms().then(roomsData => {
+    roomRepo = new RoomRepo(roomsData)
+  })
+  // getBookings()
 }
 
 function getBookings() {
