@@ -1,7 +1,7 @@
 import './css/base.scss';
-import './images/turing-logo.png'
-import './images/logo-2.png'
-import './images/bg-img-4.png'
+import './images/turing-logo.png';
+import './images/logo-2.png';
+import './images/bg-img-4.png';
 import {
   getAllPermanentPatrons,
   getSinglePermanentPatron,
@@ -10,30 +10,48 @@ import {
   addNewVictIMeanClient,
   deleteSingleBookingAsIfThatWerePossbile
 } from './apiCalls';
-import RoomRepo from './classes/RoomRepo.js'
+import domManipulation from './dom-manipulation.js';
+import RoomRepo from './classes/RoomRepo.js';
 
-// let patron;
+let roomRepo;
+let patron;
 
-function getAllPatrons() {
-  getAllPermanentPatrons().then(data => console.log(data));
-  // getSinglePatron()
-  //may need to put these invocations inside the .then
+window.addEventListener('load', instantiateRooms);
+domManipulation.submitLoginInfo.addEventListener('click', parseAllPatrons);
+domManipulation.patronLoginButton.addEventListener('click', () => domManipulation.displayPatronLogin());
+
+function parseAllPatrons() {
+  getAllPermanentPatrons().then(patronsData => {
+    parseSinglePatron(patronsData);
+  })
 }
 
-function getSinglePatron(patronID) {
-  getSinglePermanentPatron(patronID).then(data => console.log(data))
-  // getRooms()
+function parseSinglePatron(patronsData) {
+  const patronID = domManipulation.usernameField.value
+  const checkOne = patronID.startsWith('customer');
+  const checkTwo = parseInt(patronID.slice(8)) > 0;
+  const checkThree = parseInt(patronID.slice(8)) <= 50;
+  const checkFour = (domManipulation.passwordField.value === 'overlook2021')
+  if (checkOne && checkTwo && checkThree && checkFour) {
+    const idToGet = patronID.slice(8);
+    console.log(idToGet);
+    getSinglePermanentPatron(idToGet).then(singlePatronData => domManipulation.displayPatronDashboard(singlePatronData));
+  } else if (!checkOne || ! checkTwo || !checkThree){
+    domManipulation.displayUsernameErrorMessage();
+  } else {
+    domManipulation.displayPasswordErrorMessage();
+  }
 }
 
-function getRooms() {
+function instantiateRooms() {
   getAllRooms().then(roomsData => {
-    roomRepo = new RoomRepo(roomsData)
+    roomRepo = new RoomRepo(roomsData);
   })
   // getBookings()
 }
 
-function getBookings() {
-  getAllBookings().then(data => console.log(data))
+function parseAllBookings() {
+  apiCalls.getAllBookings().then(data => console.log(data));
   // addVictim()
 }
 
@@ -45,5 +63,3 @@ function getBookings() {
 // function deleteBookingYeahRight() {
 //   deleteSingleBookingAsIfThatWerePossbile().then(data => console.log(data))
 // }
-
-window.addEventListener('load', getAllPatrons)

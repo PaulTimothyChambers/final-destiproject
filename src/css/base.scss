@@ -32,7 +32,7 @@ main {
   flex-wrap: wrap;
   width: 53.3vw;
   flex-direction: row;
-  padding-left: 296px;
+  margin-left: 296px;
 }
 
 .home-logo {
@@ -72,10 +72,11 @@ main {
   position: absolute;
 }
 
-.guest-login {
+.login-button {
   height: 50px;
   width: 150px;
   position: absolute;
+  cursor: pointer;
   top: 627px;
   left: 66px;
 }
@@ -109,4 +110,41 @@ main {
   width: 100vw;
   opacity: 50%;
   position: fixed;
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  width: 288px;
+}
+
+.username-field-label {
+  margin: 533px 0px 0px 51px;
+  font-family: "Quintessential", cursive;
+  color: #FFCF6E;
+}
+.username-field {
+  margin: 6px 0px 0px 52px;
+  width: 170px;
+}
+
+.password-field-label {
+  margin: 7px 0px 0px 52px;
+  font-family: "Quintessential", cursive;
+  color: #FFCF6E;
+}
+
+.password-field {
+  margin: 8px 0px 0px 53px;
+  width: 170px;
+}
+
+.submit-login-info {
+  width: 90px;
+  margin: 26px 0px 0px 98px;
+}
+
+.login-input {
+  display: flex;
+  flex-direction: column;
 }

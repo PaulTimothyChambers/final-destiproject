@@ -21,35 +21,51 @@
       <img class="nav-img" src="" alt="">
       <p class="nav-img-text"></p>
     </article>
-    <button class="guest-login" type="button" name="button">Guest Login</button>
+    <article class="login">
+      <button class="login-button" id="patronLoginButton">Permanent Login</button>
+      <label class="username-field-label hidden" id="usernameFieldLabel" for="username field">Patron</label>
+      <input class="username-field hidden" id="usernameField" type="text" name="username field">
+      <label class="password-field-label hidden" id="passwordFieldLabel" for="password field">Password</label>
+      <input class="password-field hidden" id="passwordField" type="text" name="password field">
+      <button class="submit-login-info hidden" id="submitLoginInfo">Login</button>
+    </article>
   </aside>
   <main class="">
     <section class="test3">
-      <section class="test4">
-        <img class="" src="" alt="">
-        <p></p>
-      </section>
+      <div class="test4" id="topCard">
+
+      </div>
     </section>
     <section class="test3">
-      <section class="test4">
-        <p></p>
-        <ul>
+      <div class="test4" id="leftCard">
+        <article class=" hidden">
+          <p class=""></p>
+          <ul class="">
 
-        </ul>
-      </section>
-      <section class="test4">
-        <p></p>
-        <ul>
+          </ul>
+        </article>
+      </div>
+      <div class="test4" id="rightCard">
 
-        </ul>
-      </section>
+        <article class=" hidden">
+          <p class=""></p>
+          <ul class="">
+
+          </ul>
+        </article>
+
+      </div>
     </section>
     <section class="test3">
-      <section class="test4">
-        <p></p>
-        <p></p>
-        <p></p>
-      </section>
+      <div class="test4" id="bottomCard">
+
+        <article class=" hidden">
+          <p class=""></p>
+          <p class=""></p>
+          <p class=""></p>
+        </article>
+
+      </div>
     </section>
   </main>
   <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
