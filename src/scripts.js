@@ -35,12 +35,13 @@ function parseSinglePatron(patronsData) {
   if (checkOne && checkTwo && checkThree && checkFour) {
     const idToGet = patronID.slice(8);
     console.log(idToGet);
-    getSinglePermanentPatron(idToGet).then(singlePatronData => {
-      domManipulation.displayPatronDashboard(singlePatronData)
+    getSinglePermanentPatron(idToGet)
+    .then(singlePatronData => {
       patron = new Patron(singlePatronData)
       console.log(roomRepo)
-      roomRepo.findUserBookings(patron);
-    });
+      roomRepo.findUserBookings(patron)
+      domManipulation.displayPatronDashboard(patron, roomRepo)
+    })
   } else if (!checkOne || ! checkTwo || !checkThree){
     domManipulation.displayUsernameErrorMessage();
   } else {
