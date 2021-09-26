@@ -9,14 +9,14 @@ class Room {
     this.daysBookedFor = [];
   }
 
-  findSingleRoomBookings(bookingsData) {
-    bookingsData.forEach(booking => {
+  findSingleRoomBookings(bookingsData, roomRepo) {
+    roomRepo.bookings.bookings.forEach(booking => {
       if (booking.roomNumber === this.number) {
         this.daysBookedFor.push(booking.date);
       }
     })
+    console.log(this.daysBookedFor)
   }
-
 }
 
 export default Room;

@@ -11,13 +11,20 @@ const bottomCard = document.getElementById('bottomCard');
 
 let domManipulation = {
 
-  displayPatronDashboard(patron) {
-    topCard.innerHTML =
-    `<article class="">
-      <img class="" src="" alt="">
-      <p class="welcome-message">Welcome ${patron.name}</p>
-    </article>`
+  displayPatronDashboard(patron, roomRepo) {
     domManipulation.hidePatronLogin()
+    topCard.innerHTML = `
+      <article class="welcome">
+        <img class="" src="" alt="">
+        <p class="welcome-message">Welcome ${patron.name}</p>
+      </article>`
+    patron.bookings.map(booking => {
+      return leftCard.innerHTML += `
+        <p class="outer-text">My Past <a class="inner-text">(yet present, cause I'm still here)</a> Bookings:</p>
+        <p>Date: ${booking.date}</p>
+        <p>Room: ${booking.roomNumber}</p>`;
+    })
+    rightCard.innerText = patron.findTotalCostOfRooms(roomRepo)
   },
 
   hidePatronLogin() {

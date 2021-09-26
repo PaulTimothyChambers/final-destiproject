@@ -2,21 +2,21 @@ import './css/base.scss';
 import './images/turing-logo.png';
 import './images/logo-2.png';
 import './images/bg-img-4.png';
-import {
-  getAllPermanentPatrons,
+import { getAllPermanentPatrons,
   getSinglePermanentPatron,
   getAllRooms,
   getAllBookings,
   addNewVictIMeanClient,
-  deleteSingleBookingAsIfThatWerePossbile
-} from './apiCalls';
+  deleteSingleBookingAsIfThatWerePossbile } from './apiCalls';
 import domManipulation from './dom-manipulation.js';
 import RoomRepo from './classes/RoomRepo.js';
+import Patron from './classes/User.js';
 
 let roomRepo;
 let patron;
+let bookings;
 
-window.addEventListener('load', instantiateRooms);
+window.addEventListener('load', instantiateRoomRepo);
 domManipulation.submitLoginInfo.addEventListener('click', parseAllPatrons);
 domManipulation.patronLoginButton.addEventListener('click', () => domManipulation.displayPatronLogin());
 
@@ -35,7 +35,13 @@ function parseSinglePatron(patronsData) {
   if (checkOne && checkTwo && checkThree && checkFour) {
     const idToGet = patronID.slice(8);
     console.log(idToGet);
-    getSinglePermanentPatron(idToGet).then(singlePatronData => domManipulation.displayPatronDashboard(singlePatronData));
+    getSinglePermanentPatron(idToGet)
+    .then(singlePatronData => {
+      patron = new Patron(singlePatronData)
+      console.log(roomRepo)
+      roomRepo.findUserBookings(patron)
+      domManipulation.displayPatronDashboard(patron, roomRepo)
+    })
   } else if (!checkOne || ! checkTwo || !checkThree){
     domManipulation.displayUsernameErrorMessage();
   } else {
@@ -43,15 +49,12 @@ function parseSinglePatron(patronsData) {
   }
 }
 
-function instantiateRooms() {
-  getAllRooms().then(roomsData => {
-    roomRepo = new RoomRepo(roomsData);
-  })
+function instantiateRoomRepo() {
+  console.log('it fired')
+  getAllBookings()
+  .then(bookingsData => getAllRooms(bookingsData)
+  .then(roomsData => roomRepo = new RoomRepo(roomsData, bookingsData)))
   // getBookings()
-}
-
-function parseAllBookings() {
-  apiCalls.getAllBookings().then(data => console.log(data));
   // addVictim()
 }
 
