@@ -13,12 +13,8 @@ class RoomRepo {
     })
   }
 
-  findPatronBookings(patron) {
-    this.bookings.forEach(booking => {
-      if (booking.userID === patron.id){
-        patron.bookings.push(booking)
-      }
-    })
+  logThis(repo) {
+    console.log(repo)
   }
 }
 
