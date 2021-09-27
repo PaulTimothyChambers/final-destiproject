@@ -34,11 +34,4 @@ describe('Room Repo', () => {
     roomRepo.findAllRoomBookings(bookingsSampleData, patronsSampleData);
     assert.equal(roomRepo.rooms[4].daysBookedFor, '2020/02/06');
   });
-
-  it('should be able to find all bookings for any logged-in patron', () => {
-    const patron = new Patron(patronsSampleData.patrons[0])
-    assert.deepEqual(patron.bookings, []);
-    roomRepo.findPatronBookings(patron);
-    assert.deepEqual(patron.bookings[0], bookingsSampleData.bookings[0]);
-  });
 })
