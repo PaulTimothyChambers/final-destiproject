@@ -36,11 +36,9 @@ function parseSinglePatron(patronsData) {
   const checkSix = (domManipulation.passwordField.value === 'overlook2021')
   if (checkOne && checkTwo && checkThree && checkFour && checkFive && checkSix) {
     const idToGet = patronID.slice(8);
-    console.log(idToGet);
     getSinglePermanentPatron(idToGet)
     .then(singlePatronData => {
       patron = new Patron(singlePatronData)
-      console.log(roomRepo)
       roomRepo.findPatronBookings(patron)
       domManipulation.displayPatronDashboard(patron, roomRepo)
     })
@@ -56,19 +54,7 @@ function getRoomByType() {
 }
 
 function instantiateRoomRepo() {
-  console.log('it fired')
   getAllBookings()
   .then(bookingsData => getAllRooms(bookingsData)
   .then(roomsData => roomRepo = new RoomRepo(roomsData, bookingsData)))
-  // getBookings()
-  // addVictim()
 }
-
-// function addVictim() {
-//   addNewVictIMeanClient().then(data => console.log(data))
-//   deleteBookingYeahRight()
-// }
-
-// function deleteBookingYeahRight() {
-//   deleteSingleBookingAsIfThatWerePossbile().then(data => console.log(data))
-// }
