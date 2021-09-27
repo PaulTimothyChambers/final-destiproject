@@ -20,10 +20,6 @@ class RoomRepo {
       }
     })
   }
-
-  filterRoomByType() {
-    
-  }
 }
 
 export default RoomRepo;
