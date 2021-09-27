@@ -16,7 +16,6 @@ class Patron {
       })
       return acc
     }, 0)
-    console.log('this', totalCost)
     return totalCost
   }
 }
