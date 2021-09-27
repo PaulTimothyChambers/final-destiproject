@@ -10,7 +10,7 @@ class Room {
   }
 
   findSingleRoomBookings(bookingsData, roomRepo) {
-    roomRepo.bookings.bookings.forEach(booking => {
+    roomRepo.bookings.forEach(booking => {
       if (booking.roomNumber === this.number) {
         this.daysBookedFor.push(booking.date);
       }
