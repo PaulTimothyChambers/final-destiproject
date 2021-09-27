@@ -27,26 +27,32 @@ function parseAllPatrons() {
 }
 
 function parseSinglePatron(patronsData) {
-  const patronID = domManipulation.usernameField.value
+  const patronID = domManipulation.usernameField.value;
   const checkOne = patronID.startsWith('customer');
   const checkTwo = parseInt(patronID.slice(8)) > 0;
   const checkThree = parseInt(patronID.slice(8)) <= 50;
-  const checkFour = (domManipulation.passwordField.value === 'overlook2021')
-  if (checkOne && checkTwo && checkThree && checkFour) {
+  const checkFour = patronID.length >= 9;
+  const checkFive = patronID.length < 11;
+  const checkSix = (domManipulation.passwordField.value === 'overlook2021')
+  if (checkOne && checkTwo && checkThree && checkFour && checkFive && checkSix) {
     const idToGet = patronID.slice(8);
     console.log(idToGet);
     getSinglePermanentPatron(idToGet)
     .then(singlePatronData => {
       patron = new Patron(singlePatronData)
       console.log(roomRepo)
-      roomRepo.findUserBookings(patron)
+      roomRepo.findPatronBookings(patron)
       domManipulation.displayPatronDashboard(patron, roomRepo)
     })
-  } else if (!checkOne || ! checkTwo || !checkThree){
+  } else if (!checkOne || !checkTwo || !checkThree || !checkFour || !checkFive){
     domManipulation.displayUsernameErrorMessage();
   } else {
     domManipulation.displayPasswordErrorMessage();
   }
+}
+
+function getRoomByType() {
+
 }
 
 function instantiateRoomRepo() {
