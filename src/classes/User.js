@@ -8,7 +8,7 @@ class Patron {
 
   findTotalCostOfRooms(roomRepo) {
     const totalCost = this.bookings.reduce((acc, booking) => {
-      roomRepo.rooms.rooms.forEach(room => {
+      roomRepo.rooms.forEach(room => {
         if (booking.roomNumber === room.number) {
           acc += room.costPerNight;
         }
