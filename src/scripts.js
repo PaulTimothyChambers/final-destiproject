@@ -41,6 +41,7 @@ function parseSinglePatron(patronsData) {
       patron = new Patron(singlePatronData)
       roomRepo.findPatronBookings(patron)
       domManipulation.displayPatronDashboard(patron, roomRepo)
+      console.log(roomRepo)
     })
   } else if (!checkOne || !checkTwo || !checkThree || !checkFour || !checkFive){
     domManipulation.displayUsernameErrorMessage();
@@ -49,12 +50,40 @@ function parseSinglePatron(patronsData) {
   }
 }
 
-function getRoomByType() {
-
-}
-
 function instantiateRoomRepo() {
   getAllBookings()
   .then(bookingsData => getAllRooms(bookingsData)
   .then(roomsData => roomRepo = new RoomRepo(roomsData, bookingsData)))
 }
+
+let scripts = {
+  filterAvailableRooms(filteredRoomType) {
+    const filteredRoomsByType = roomRepo.rooms.filter(room => {
+      return room.roomType === filteredRoomType.toLowerCase();
+    })
+    domManipulation.displayRoomsByType(filteredRoomsByType);
+  },
+
+  checkDate(dateSelected) {
+    let freeOfBookings = roomRepo.rooms;
+    roomRepo.bookings.forEach(booking => {
+      roomRepo.rooms.forEach(room => {
+        if (dateSelected.split('-') === booking.date.split('/') && booking.roomNumber === room.number) {
+          freeOfBookings.splice(freeOfBookings.indexOf(room), 1)
+          console.log(freeOfBookings)
+        }
+      })
+      // if (booking.date === bookingStartDate.value.format('YYYY/MM/DD')) {
+      //   roomRepo.rooms
+      // }
+    })
+    // foundBookings.forEach(bookedRoom => {
+    //   if (bookedRoom {
+    //
+    // })
+
+
+  }
+}
+
+export default scripts;
