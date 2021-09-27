@@ -8,26 +8,50 @@ const topCard = document.getElementById('topCard');
 const leftCard = document.getElementById('leftCard');
 const rightCard = document.getElementById('rightCard');
 const bottomCard = document.getElementById('bottomCard');
+const chooseBookingOptions = document.getElementById('chooseBookingOptions');
+const main = document.getElementById('main');
+const availableRooms = document.getElementById('availableRooms');
+const calendar = document.getElementById('calendar');
+const filter = document.getElementById('filter');
+
+let newBookingButton;
 
 let domManipulation = {
 
   displayPatronDashboard(patron, roomRepo) {
-    domManipulation.hidePatronLogin()
+    domManipulation.hidePatronLoginFields();
     topCard.innerHTML = `
       <article class="welcome">
-        <img class="" src="" alt="">
+        <img class="welcome-image" src="./images/welcome-image.png" alt="">
         <p class="welcome-message">Welcome ${patron.name}</p>
-      </article>`
+        <button class="new-booking-button" id="newBookingButton">Make "New" Booking<a class="wink-wink">*wink* *wink*</a></button>
+      </article>`;
+    newBookingButton = document.getElementById('newBookingButton');
+    newBookingButton.addEventListener('click', () => domManipulation.displayNewBookingView())
+    leftCard.innerHTML = '<p class="outer-text">My Past <a class="inner-text">(yet present, cause I\'m still here)</a> Bookings:</p>'
     patron.bookings.map(booking => {
       return leftCard.innerHTML += `
-        <p class="outer-text">My Past <a class="inner-text">(yet present, cause I'm still here)</a> Bookings:</p>
         <p>Date: ${booking.date}</p>
         <p>Room: ${booking.roomNumber}</p>`;
     })
-    rightCard.innerText = patron.findTotalCostOfRooms(roomRepo)
+    // rightCard.innerHTML =
+    bottomCard.innerHTML = `
+      <article class="cost-assessment">
+        <p class="total-cost">Total Social Clout:</p>
+        <p class="cost">${patron.findTotalCostOfRooms(roomRepo)}</p>
+        <p class="level">Patron LVL: 8</p>
+      </article>`
   },
 
-  hidePatronLogin() {
+  displayNewBookingView() {
+    domManipulation.hide(main);
+    domManipulation.show(chooseBookingOptions);
+    calendar.innerHTML = `
+      <label for="bookingStartDate">Start Date:</label>
+      <input type="date" id="bookingStartDate" name="booking start date" value="${dayjs().format('YYYY-MM-DD')}" min="${dayjs().format('YYYY-MM-DD')}">`
+  },
+
+  hidePatronLoginFields() {
     domManipulation.hide(usernameFieldLabel);
     domManipulation.hide(passwordFieldLabel);
     domManipulation.hide(submitLoginInfo);
@@ -42,6 +66,7 @@ let domManipulation = {
     domManipulation.show(submitLoginInfo);
     domManipulation.show(usernameField);
     domManipulation.show(passwordField);
+    domManipulation.show(newBooking);
   },
 
   displayPasswordErrorMessage() {
@@ -66,7 +91,6 @@ let domManipulation = {
 
   emptyField(field) {
     document.getElementById(field).value = '';
-    // submitLoginInfo.addEventListener('click', parseAllPatrons)
   },
 
   hide(ele) {
