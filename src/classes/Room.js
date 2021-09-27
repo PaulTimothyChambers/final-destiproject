@@ -16,6 +16,10 @@ class Room {
       }
     })
   }
+
+  logThis(room) {
+    console.log(room)
+  }
 }
 
 export default Room;
