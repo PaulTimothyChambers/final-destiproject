@@ -26,7 +26,8 @@ body::-webkit-scrollbar {
   bottom: 243px;
 }
 
-main {
+main,
+.new-booking {
   position: absolute;
   display: flex;
   flex-wrap: wrap;
