@@ -1,74 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Quintessential&family=Zhi+Mang+Xing&display=swap" rel="stylesheet">
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webpack Starter Kit</title>
-</head>
-<body>
-  <img class="background-image" src="./images/bg-img-4.png" alt="mildly disturbing image of a unsettling hotel hallway as the background of the webpage">
-  <aside class="navigation" aria-label="navigation">
-    <article class="home-logo">
-      <img class="hotel-logo" src="./images/turing-logo.png" alt="hotel california logo, consisting of the words hotel and california superimposed over the infinity symbol, signifiying that no one ever leaves">
-      <img class="hotel-logo-2" src="./images/logo-2.png" alt="decorative, flowing, and ornate pen-strokes underlining the hotel california's logo">
-      <p class="home-name">Hotel California</p>
-    </article>
-    <article class="book-now-button">
-      <img class="nav-img" src="" alt="">
-      <p class="nav-img-text"></p>
-    </article>
-    <article class="login">
-      <button class="login-button" id="patronLoginButton">Permanent Login</button>
-      <label class="username-field-label hidden" id="usernameFieldLabel" for="username field">Patron</label>
-      <input class="username-field hidden" id="usernameField" type="text" name="username field">
-      <label class="password-field-label hidden" id="passwordFieldLabel" for="password field">Password</label>
-      <input class="password-field hidden" id="passwordField" type="text" name="password field">
-      <button class="submit-login-info hidden" id="submitLoginInfo">Login</button>
-    </article>
-  </aside>
-  <main class="">
-    <section class="test3">
-      <div class="test4" id="topCard">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quintessential&family=Zhi+Mang+Xing&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Room So Nice You'll Stay the Rest of Your Life</title>
+  </head>
+  <body>
+    <img class="background-image" src="./images/bg-img-4.png" alt="mildly disturbing image of a unsettling hotel hallway as the background of the webpage">
+    <aside class="navigation" aria-label="navigation">
+      <article class="home-logo">
+        <img class="hotel-logo" src="./images/turing-logo.png" alt="hotel california logo, consisting of the words hotel and california superimposed over the infinity symbol, signifiying that no one ever leaves">
+        <img class="hotel-logo-2" src="./images/logo-2.png" alt="decorative, flowing, and ornate pen-strokes underlining the hotel california's logo">
+        <p class="home-name">Hotel California</p>
+      </article>
+      <article class="book-now-button">
+        <img class="nav-img" src="" alt="">
+        <p class="nav-img-text"></p>
+      </article>
+      <article class="login">
+        <button class="login-button" id="patronLoginButton">Permanent Login</button>
+        <label class="username-field-label hidden" id="usernameFieldLabel" for="username field">Patron</label>
+        <input class="username-field hidden" id="usernameField" type="text" name="username field">
+        <label class="password-field-label hidden" id="passwordFieldLabel" for="password field">Password</label>
+        <input class="password-field hidden" id="passwordField" type="text" name="password field">
+        <button class="submit-login-info hidden" id="submitLoginInfo">Login</button>
+      </article>
+    </aside>
+    <main class="" id="main">
+      <section class="test3">
+        <div class="test4" id="topCard">
+
+        </div>
+      </section>
+      <section class="test3">
+        <div class="test4">
+          `<article class="my-bookings">
+            <p class="bookings"></p>
+            <ul class="list-my-bookings" id="leftCard">
+
+            </ul>
+          </article>`
+        </div>
+        <div class="test4">
+          <article class="my-bookings">
+            <p class="bookings"></p>
+            <ul class="list-my-bookings" id="rightCard">
+
+            </ul>
+          </article>
+        </div>
+      </section>
+      <section class="test3">
+        <div class="test4" id="bottomCard">
+
+        </div>
+      </section>
+    </main>
+    <section class="new-booking" id="newBooking">
+      <div class="choose-booking-options hidden" id="chooseBookingOptions">
+        <p class="create-new-booking-text">CREATE "NEW" BOOKING</p>
+        <div class="calender">
+          <p class="calendar-text">Choose Day:</p>
+          <nav role="navigation" id="calendar">
+
+          </nav>
+        </div>
+        <div class="filter-by-room">
+          <p class="filter-text">Filter by Room Type</p>
+          <nav role="navigation" id="filter">
+
+          </nav>
+        </div>
+        <p class="available-rooms-text">AVAILABLE ROOMS:</p>
+      </div>
+      <div class="available-rooms" id="availableRooms">
 
       </div>
     </section>
-    <section class="test3">
-      <div class="test4">
-        `<article class="my-bookings">
-          <p class="bookings"></p>
-          <ul class="list-my-bookings" id="leftCard">
-            
-          </ul>
-        </article>`
-      </div>
-      <div class="test4">
-        <article class="my-bookings">
-          <p class="bookings"></p>
-          <ul class="list-my-bookings" id="rightCard">
-
-          </ul>
-        </article>
-
-      </div>
-    </section>
-    <section class="test3">
-      <div class="test4" id="bottomCard">
-
-        <article class=" hidden">
-          <p class=""></p>
-          <p class=""></p>
-          <p class=""></p>
-        </article>
-
-      </div>
-    </section>
-  </main>
-  <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
-  <script src="bundle.js"></script>
-
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.7/dayjs.min.js"></script>
+    <script src="bundle.js"></script>
+  </body>
 </html>
