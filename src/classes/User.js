@@ -3,6 +3,7 @@ class Patron {
     this.id = patronsData.id;
     this.name = patronsData.name;
     this.bookings = [];
+    this.upcoming = [];
   }
 
   findTotalCostOfRooms(roomRepo) {
