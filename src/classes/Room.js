@@ -15,7 +15,6 @@ class Room {
         this.daysBookedFor.push(booking.date);
       }
     })
-    console.log(this.daysBookedFor)
   }
 }
 
