@@ -11,16 +11,14 @@ class RoomRepo {
     this.rooms.forEach(room => {
       room.findSingleRoomBookings(bookingsData, this);
     })
-    console.log()
   }
 
-  findUserBookings(patron) {
+  findPatronBookings(patron) {
     this.bookings.bookings.forEach(booking => {
       if (booking.userID === patron.id){
         patron.bookings.push(booking)
       }
     })
-    console.log(patron)
   }
 }
 
