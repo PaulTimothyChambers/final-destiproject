@@ -1,20 +1,16 @@
 import Room from './Room.js';
 
 class RoomRepo {
-  constructor(roomsData, bookingsData) {
-    this.rooms = roomsData.rooms;
+  constructor(rooms, bookingsData) {
+    this.rooms = rooms.rooms;
     this.bookings = bookingsData.bookings;
   }
 
-  findAllRoomBookings(bookingsData, patronsData) {
+  findAllRoomBookings(patronsData) {
     this.rooms = this.rooms.map(room => new Room(room));
     this.rooms.forEach(room => {
-      room.findSingleRoomBookings(bookingsData, this);
+      room.findSingleRoomBookings(this);
     })
-  }
-
-  logThis(repo) {
-    console.log(repo)
   }
 }
 
