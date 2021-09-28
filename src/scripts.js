@@ -134,7 +134,6 @@ function  filterAvailableRooms__finalCheck(filteredRoomsByType) {
 };
 
 let scripts = {
-
   selectNewElements() {
     filteredListItems = document.querySelectorAll('#filteredListItem');
     filteredListItems.forEach(item => {
