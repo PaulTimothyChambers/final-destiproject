@@ -132,7 +132,6 @@ function show(ele) {
 };
 
 let domManipulation = {
-
   displayPatronDashboard__displayTopCard(patron, roomRepo) {
     hidePatronLoginFields();
     hide(leftCardText);
