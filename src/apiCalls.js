@@ -28,14 +28,14 @@ function getAllBookings() {
     .catch(error => console.log(error))
 }
 
-function addNewVictIMeanClient(newVictim) {
+function addNewVictIMeanClient(newVictim, patron) {
   return fetch(`${apiEndpoint}/api/v1/bookings`, {
     method: 'POST',
     body: JSON.stringify(newVictim),
     headers: { 'Content-Type': 'application/json' }
   })
   .then(response => response.json())
-  .then(data => data)
+  .then(data => patron.upcoming.push({date: data.newBooking.date, room: data.newBooking.roomNumber}))
   .catch(error => console.log(error))
 }
 
