@@ -16,43 +16,45 @@ body::-webkit-scrollbar {
 
 .navigation {
   display: flex;
+  position: fixed;
   height: 100vh;
   width: 20vw;
   background-color: #132F3E;
   border-radius: 9px;
-  position: fixed;
   bottom: 243px;
 }
 
 main,
 .new-booking {
-  position: absolute;
   display: flex;
   flex-wrap: wrap;
-  width: 53.3vw;
+  position: absolute;
   flex-direction: row;
+  width: 53.3vw;
   margin-left: 296px;
   z-index: 1;
 }
 
 .top-card__intro-text-one {
   font-family: "Quintessential", cursive;
+  font-weight: bolder;
+  position: absolute;
   font-size: 106px;
   color: #F00000;
-  position: absolute;
   opacity: 100%;
   top: -71px;
   left: 36px;
 }
 
 .top-card__intro-text-two {
-  top: 120px;
-  position: absolute;
   font-family: "Quintessential", cursive;
+  font-weight: bolder;
+  position: absolute;
   font-size: 38.3px;
-  color: #380700;
+  color: #13143E;
   width: 1000px;
-  left: 165px;
+  top: 126px;
+  left: 308px;
 }
 
 li {
@@ -93,7 +95,7 @@ ul li:focus-within > ul {
   display: block;
 }
 
-.home-logo {
+.navigation__home-logo {
   display: flex;
   position: absolute;
   height: 112px;
@@ -101,59 +103,59 @@ ul li:focus-within > ul {
   top: 301px;
 }
 
-.hotel-logo {
+.home-logo__hotel-logo {
   height: 89px;
   width: 226px;
-  opacity: 26%;
   padding: 31px;
+  opacity: 26%;
 }
 
-.hotel-logo-2 {
+.home-logo__hotel-logo-2 {
   position: absolute;
   height: 44px;
   width: 249px;
+  margin-top: 102px;
   padding: 19px;
   opacity: 55%;
-  margin-top: 102px;
 }
 
-.home-name {
-  font-family: "Quintessential", cursive;
-  height: 154px;
-  font-size: 49px;
+.home-logo__home-name {
   display: flex;
   text-align: center;
+  position: absolute;
+  font-family: "Quintessential", cursive;
+  height: 154px;
   width: 287px;
   margin: -11px 0px 0px 0px;
+  font-size: 49px;
   font-weight: bolder;
   color: #F00000;
-  position: absolute;
 }
 
-.login-button {
+.login__login-button {
+  position: absolute;
   height: 50px;
   width: 150px;
-  position: absolute;
-  cursor: pointer;
   top: 627px;
   left: 66px;
+  cursor: pointer;
 }
 
 .welcome-message {
-  font-family: "Quintessential", cursive;
   display: flex;
   justify-content: center;
+  font-family: "Quintessential", cursive;
 }
 
 .new-booking-button {
-  font-family: "Quintessential", cursive;
-  align-items: center;
   display: flex;
+  align-items: center;
   flex-direction: column;
+  font-family: "Quintessential", cursive;
   height: 42px;
   width: 345px;
-  font-size: 26px;
   margin: 172px 0px 0px 352px;
+  font-size: 26px;
 }
 
 .wink-wink {
@@ -164,13 +166,39 @@ ul li:focus-within > ul {
 .mid-card__left,
 .mid-card__right,
 .bottom-card__bottom {
+  position: absolute;
   height: 40vh;
   width: 72vw;
+  margin: 47px;
+  background-color: #D4815E;
   border: 4px solid;
   border-radius: 20px;
   opacity: 100%;
-  margin: 47px;
+}
+
+.bottom-card,
+.mid-card,
+.top-card {
+  display: flex;
+  flex-direction: row;
   position: absolute;
+  height: 59vh;
+  width: 79vw;
+  background-color: #FFE9BD;
+  opacity: 70%;
+}
+
+.top-card {
+  height: 48vh;
+}
+
+.bottom-card {
+  top: 698px;
+}
+
+.mid-card {
+  height: 57vh;
+  top: 338px;
 }
 
 .top-card__top-alt,
@@ -180,91 +208,101 @@ ul li:focus-within > ul {
   background-color: #D4815E;
 }
 
-.bottom-card,
-.mid-card,
-.top-card {
-  height: 59vh;
-  width: 79vw;
-  flex-direction: row;
-  display: flex;
-  background-color: #FFE9BD;
-  opacity: 70%;
-  position: absolute;
-}
-
-.top-card {
-  height: 48vh;
-}
-
-.bottom-card {
-  top: 916px;
-}
-
-.mid-card {
-  top: 338px;
-  height: 57vh;
-}
-
 .mid-card__left {
   width: 32.4vw;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .mid-card__right {
-  top: 0px;
   width: 32.4vw;
+  top: 0px;
   left: 569px;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .background-image {
+  position: fixed;
   height: 100vh;
   width: 100vw;
-  opacity: 40%;
-  position: fixed;
+  opacity: 30%;
 }
 
 .right-card__image {
-  height: 40vh;
-  width: 32.4vw;
   display: flex;
   position: absolute;
-  opacity: 20%;
+  height: 40vh;
+  width: 32.4vw;
   border-radius: 15px;
+  opacity: 25%;
 }
 
 .left-card__image {
-  height: 40vh;
-  width: 32.4vw;
   display: flex;
   position: absolute;
-  opacity: 20%;
+  height: 40vh;
+  width: 32.4vw;
   border-radius: 15px;
+  opacity: 25%;
 }
 
 .top-card__image {
-  height: 40vh;
-  width: 72vw;
   display: flex;
   position: absolute;
-  opacity: 40%;
+  height: 40vh;
+  width: 72vw;
   border-radius: 15px;
+  opacity: 45%;
 }
 
-.left-card__text {
-  font-family: "Quintessential", cursive;
-  font-size: 42px;
-  text-align: center;
+.left-card__text-one,
+.left-card__text-two {
   position: absolute;
+  text-align: center;
+  font-family: "Quintessential";
+  font-weight: bolder;
+  font-size: 42px;
   top: 139px;
   color: #F00000;
 }
 
-.right-card__text {
-  font-family: "Quintessential", cursive;
-  font-size: 42px;
-  text-align: center;
+.left-card__text-one {
+  top: 9px;
+  left: 30px;
+}
+
+.left-card__text-two {
+  top: 167px;
+  left: 140px;
+  color: #13143E;
+}
+
+.right-card__text-one,
+.right-card__text-two {
   position: absolute;
+  text-align: center;
+  font-family: "Quintessential";
+  font-weight: bolder;
+  font-size: 42px;
   top: 139px;
   color: #F00000;
+}
+
+.right-card__text-one {
+  top: 4px;
+  left: 19px;
+}
+
+.right-card__text-two {
+  font-size: 47px;
+  top: 111px;
+  left: 137px;
+  color: #13143E;
+}
+
+.tiny-words {
+  font-size: 5px;
 }
 
 .login {
@@ -273,35 +311,30 @@ ul li:focus-within > ul {
   width: 288px;
 }
 
-.username-field-label {
+.login__username-field-label {
+  font-family: "Quintessential", cursive;
   margin: 533px 0px 0px 51px;
-  font-family: "Quintessential", cursive;
   color: #FFCF6E;
 }
-.username-field {
+.login__username-field {
+  width: 170px;
   margin: 6px 0px 0px 52px;
-  width: 170px;
 }
 
-.password-field-label {
-  margin: 7px 0px 0px 52px;
+.login__password-field-label {
   font-family: "Quintessential", cursive;
+  margin: 7px 0px 0px 52px;
   color: #FFCF6E;
 }
 
-.password-field {
-  margin: 8px 0px 0px 53px;
+.login__password-field {
   width: 170px;
+  margin: 8px 0px 0px 53px;
 }
 
-.submit-login-info {
+.login__submit-login-info {
   width: 90px;
   margin: 26px 0px 0px 98px;
-}
-
-.login-input {
-  display: flex;
-  flex-direction: column;
 }
 
 .checked {

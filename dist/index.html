@@ -12,75 +12,68 @@
   <body>
     <img class="background-image" id="backgroundImage" src="./images/bg-img-4.png" alt="mildly disturbing image of a unsettling hotel hallway as the background of the webpage">
     <aside class="navigation" aria-label="navigation">
-      <article class="home-logo">
-        <img class="hotel-logo" src="./images/turing-logo.png" alt="hotel california logo, consisting of the words hotel and california superimposed over the infinity symbol, signifiying that no one ever leaves">
-        <img class="hotel-logo-2" src="./images/logo-2.png" alt="decorative, flowing, and ornate pen-strokes underlining the hotel california's logo">
-        <p class="home-name">Hotel California</p>
-      </article>
-      <article class="book-now-button">
-        <img class="nav-img" src="" alt="">
-        <p class="nav-img-text"></p>
+      <article class="navigation__home-logo">
+        <img class="home-logo__hotel-logo" src="./images/turing-logo.png" alt="hotel california logo, consisting of the words hotel and california superimposed over the infinity symbol, signifiying that no one ever leaves">
+        <img class="home-logo__hotel-logo-2" src="./images/logo-2.png" alt="decorative, flowing, and ornate pen-strokes underlining the hotel california's logo">
+        <p class="home-logo__home-name">Hotel California</p>
       </article>
       <article class="login">
-        <button class="login-button" id="patronLoginButton">Permanent Login</button>
-        <label class="username-field-label hidden" id="usernameFieldLabel" for="username field">Patron</label>
-        <input class="username-field hidden" id="usernameField" type="text" name="username field">
-        <label class="password-field-label hidden" id="passwordFieldLabel" for="password field">Password</label>
-        <input class="password-field hidden" id="passwordField" type="text" name="password field">
-        <button class="submit-login-info hidden" id="submitLoginInfo">Login</button>
+        <button class="login__login-button" id="patronLoginButton">Permanent Login</button>
+        <label class="login__username-field-label hidden" id="usernameFieldLabel" for="username field">Patron</label>
+        <input class="login__username-field hidden" id="usernameField" type="text" name="username field">
+        <label class="login__password-field-label hidden" id="passwordFieldLabel" for="password field">Password</label>
+        <input class="login__password-field hidden" id="passwordField" type="text" name="password field">
+        <button class="login__submit-login-info hidden" id="submitLoginInfo">Login</button>
       </article>
     </aside>
-    <main class="" id="main">
+    <main id="main">
       <section class="top-card" id="topCardTop">
         <article class="top-card__top" id="topCard">
           <img class="top-card__image" id="imageTopCard" src="./images/bg-img-2.png" alt="">
           <p class="top-card__intro-text-one">HOTEL CALIFORNIA</p>
-          <p class="top-card__intro-text-two">WHEN YOU STAY HERE, YOU STAY HERE</p>
+          <p class="top-card__intro-text-two">when you stay here, you STAY here</p>
         </article>
       </section>
       <section class="mid-card">
         <div class="mid-card__left" id="midCardLeft">
           <img class="left-card__image" id="imageLeftCard" src="./images/bg-img.png" alt="">
-          <p class="left-card__text" id="leftCardText">Come and Explore our ENDLESS HALLWAYS</p>
+          <p class="left-card__text-one" id="leftCardText">Is this an EXIT?</p>
+          <p class="left-card__text-two" id="leftCardTextTwo">or a MIRAGE?</p>
           <article class="my-bookings">
             <p class="bookings"></p>
             <ul class="list-my-bookings" id="leftCard">
-
             </ul>
           </article>`
         </div>
         <div class="mid-card__right" id="midCardRight">
           <img class="right-card__image" id="imageRightCard" src="./images/bg-img-3.png" alt="">
-          <p class="right-card__text" id="rightCardText">Is that an EXIT or a MIRAGE?</p>
+          <p class="right-card__text-one" id="rightCardText">Come Explore Our</p>
+          <p class="right-card__text-two" id="rightCardTextTwo">ENDLESS HALLWAYS</p>
           <article class="my-bookings">
             <p class="bookings"></p>
             <ul class="list-my-bookings" id="rightCard">
-
             </ul>
           </article>
         </div>
       </section>
       <section class="bottom-card hidden" id="bottomCard">
         <article class="bottom-card__bottom hidden" id="bottomCardBottom">
-
         </article>
       </section>
     </main>
     <section class="new-booking" id="newBooking">
       <div class="choose-booking-options hidden" id="chooseBookingOptions">
         <p class="date-error-message hidden" id="dateErrorMessage">Please select a date you would like to book a room for</p>
-        <p class="no-dates-text hidden" id="noDatesAvailableApologyMessage">Oh my! The rooms you are looking for are fully booked that day! We suggest that you adjust your expectations and try again (and since we're smarter than you, you should probably take our advice).</p>
+        <p class="no-dates-text hidden" id="noDatesAvailableApologyMessage">Oh my! The rooms you are looking for are fully booked that day! We suggest that you adjust your expectations and try again (and since we'll be spending a LOT OF TIME TOGETHER, you should probably take our advice).</p>
         <p class="create-new-booking-text">CREATE "NEW" BOOKING</p>
         <article class="calender">
           <p class="calendar-text">Choose Day:</p>
           <nav role="navigation" id="calendar">
-
           </nav>
         </article>
         <article class="filter-by-room">
           <p class="filter-text">Filter by Room Type</p>
           <nav role="navigation" id="filtered">
-
           </nav>
         </article>
         <p class="available-rooms-text">AVAILABLE ROOMS:</p>

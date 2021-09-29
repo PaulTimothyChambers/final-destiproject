@@ -100,11 +100,10 @@ function filterAvailableRooms__checkDate() {
   roomRepo.rooms.forEach(room => {
     const checkBookedRoomDates = room.daysBookedFor.includes(bookingStartDate.value.split('-').join('/'));
     const checkForDateValue = (bookingStartDate.value === '');
-    // const checkForDuplicates = filteredRoomsByType.includes(room);
     if (checkForDateValue) {
       domManipulation.displayDateUndefinedMessage()
 
-    } else if (!checkBookedRoomDates && !checkForDateValue) { // && !checkForDuplicates
+    } else if (!checkBookedRoomDates && !checkForDateValue) {
       filteredRoomsByType.push(room);
     }
   })
@@ -129,7 +128,7 @@ function filterAvailableRooms__checkFilters(filteredRoomsByType) {
   })
 };
 
-let scripts = {
+const scripts = {
   selectNewElements() {
     filteredListItems = document.querySelectorAll('#filteredListItem');
     filteredListItems.forEach(item => {
@@ -138,7 +137,7 @@ let scripts = {
   },
 
   makePOSTRequest() {
-    let roomNumber = parseInt(event.target.closest('article').id)
+    const roomNumber = parseInt(event.target.closest('article').id)
     const newVictim = {
       userID: patron.id,
       date: bookingStartDate.value.split('-').join('/'),

@@ -28,7 +28,7 @@ class Patron {
   }
 
   sortBookings() {
-    const currentDate = dayjs().format('YYYY-MM-DD').split('-').join(''); //replace with today's date for testing suite (i.e. 20212909)
+    const currentDate = 20212909; //replace with today's date for testing suite (i.e. 20212909)
     this.bookings.forEach(booking => {
       const dateOfBooking = booking.date.split('/').join('');
       if (parseInt(dateOfBooking) > parseInt(currentDate)) {

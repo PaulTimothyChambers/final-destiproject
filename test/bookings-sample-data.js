@@ -58,7 +58,7 @@ export const bookingsSampleData = {
     },
     {
       "id":"5fwrgu4i7k55hl6tc",
-      "userID":22,
+      "userID":3,
       "date":"2020/01/30",
       "roomNumber":13,
       "roomServiceCharges":[]
@@ -70,7 +70,7 @@ export const bookingsSampleData = {
       "roomServiceCharges":[]
     },{
       "id":"5fwrgu4i7k55hl6te",
-      "userID":44,
+      "userID":3,
       "date":"2022/01/19",
       "roomNumber":8,
       "roomServiceCharges":[]
