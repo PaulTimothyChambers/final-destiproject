@@ -18,6 +18,8 @@ const midCardRight = document.getElementById('midCardRight');
 const bottomCardBottom = document.getElementById('bottomCardBottom');
 const leftCardText = document.getElementById('leftCardText');
 const rightCardText = document.getElementById('rightCardText');
+const leftCardTextTwo = document.getElementById('leftCardTextTwo');
+const rightCardTextTwo = document.getElementById('rightCardTextTwo');
 const topCardImage = document.getElementById('imageTopCard');
 const leftCardImage = document.getElementById('imageLeftCard');
 const rightCardImage = document.getElementById('imageRightCard');
@@ -29,10 +31,6 @@ const checkAvailability = document.getElementById('checkAvailability');
 const chooseBookingOptions = document.getElementById('chooseBookingOptions');
 const noDatesAvailableApologyMessage = document.getElementById('noDatesAvailableApologyMessage');
 
-let submitBookingButton;
-let bookingStartDate;
-let roomNumber;
-
 function displayPatronDashboard__createSelectorAndListener(patron, roomRepo) {
   const newBookingButton = document.getElementById('newBookingButton');
   newBookingButton.addEventListener('click', () => displayNewBookingView__switchView());
@@ -40,7 +38,8 @@ function displayPatronDashboard__createSelectorAndListener(patron, roomRepo) {
   displayPatronDashboard__displayLeftCard(patron, roomRepo);
 };
 
-function displayPatronDashboard__displayLeftCard(patron, roomRepo) {
+function displayPatronDashboard__displayLeftCard(patron, roomRepo)
+ {
   leftCard.innerHTML = '<p class="outer-text">My Past <a class="inner-text">(yet present, cause I\'m still here)</a> Bookings:</p>';
   patron.bookings.forEach(booking => {
     leftCard.innerHTML += `
@@ -65,7 +64,7 @@ function displayPatronDashboard__displayRightCard(patron, roomRepo) {
 function displayPatronDashboard__displayBottomCard(patron, roomRepo) {
   show(bottomCard);
   show(bottomCardBottom);
-  topCardTop.classList.toggle('top-card__top-alt');
+  topCard.classList.toggle('top-card__top-alt');
   midCardLeft.classList.toggle('mid-card__left-alt')
   midCardRight.classList.toggle('mid-card__right-alt')
   bottomCardBottom.innerHTML = `
@@ -110,11 +109,15 @@ function displayNewBookingView__filteredView() {
 };
 
 function hidePatronLoginFields() {
-  hide(topCardImage);
   hide(usernameField);
   hide(passwordField);
+  hide(leftCardText);
+  hide(topCardImage)
   hide(leftCardImage);
+  hide(rightCardText);
   hide(rightCardImage);
+  hide(leftCardTextTwo);
+  hide(rightCardTextTwo);
   hide(submitLoginInfo);
   hide(usernameFieldLabel);
   hide(passwordFieldLabel);
@@ -136,8 +139,13 @@ let domManipulation = {
   displayPatronDashboard__changeView(patron, roomRepo) {
     hidePatronLoginFields();
     hide(leftCardText);
+    hide(topCardImage);
+    hide(leftCardImage);
     hide(rightCardText);
+    hide(rightCardImage);
     hide(availableRooms);
+    hide(leftCardTextTwo);
+    hide(rightCardTextTwo);
     hide(checkAvailability);
     hide(chooseBookingOptions);
     show(main);
@@ -146,6 +154,7 @@ let domManipulation = {
   },
 
   displayPatronDashboard__displayTopCard(patron, roomRepo) {
+    hidePatronLoginFields()
     topCard.innerHTML = `
       <article class="welcome">
         <img class="welcome-image" src="./images/welcome-image.png" alt="">
