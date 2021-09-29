@@ -4,7 +4,6 @@ import RoomRepo from '../src/classes/RoomRepo.js';
 import { patronsSampleData } from './patrons-sample-data.js';
 import { roomsSampleData } from './rooms-sample-data.js';
 import { bookingsSampleData } from './bookings-sample-data.js';
-import * as dayjs from 'dayjs'
 
 describe('Patron', () => {
   let patron;
@@ -51,6 +50,4 @@ describe('Patron', () => {
     patron.sortBookings();
     assert.deepEqual(patron.upcoming[0], bookingsSampleData[10]);
   });
-
-
 })
