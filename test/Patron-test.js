@@ -40,14 +40,23 @@ describe('Patron', () => {
   it('should be able to find all past/present bookings for any logged-in patron', () => {
     roomRepo = new RoomRepo(roomsSampleData, bookingsSampleData);
     assert.deepEqual(patron.bookings, []);
+
     patron.findPatronBookings(patron, roomRepo);
     assert.deepEqual(patron.bookings[0].date, '2020/04/22');
+    assert.equal(patron.bookings.length, 3)
   });
 
   it('should be able to sort/separate out all upcoming bookings for any logged-in patron', () => {
     roomRepo = new RoomRepo(roomsSampleData, bookingsSampleData);
+    patron.findPatronBookings(patron, roomRepo);
+
+    assert.equal(patron.bookings.length, 3);
     assert.deepEqual(patron.upcoming, []);
+
     patron.sortBookings();
-    assert.deepEqual(patron.upcoming[0], bookingsSampleData[10]);
+
+    assert.equal(patron.bookings.length, 2);
+    assert.equal(patron.upcoming.length, 1);
+    assert.deepEqual(patron.upcoming[0], bookingsSampleData.bookings[10]);
   });
 })
