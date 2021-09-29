@@ -1,0 +1,40 @@
+.login {
+  display: flex;
+  flex-direction: column;
+  width: 288px;
+
+  &__username-field-label {
+    font-family: "Quintessential", cursive;
+    margin: 533px 0px 0px 51px;
+    color: #FFCF6E;
+  }
+  &__username-field {
+    width: 170px;
+    margin: 6px 0px 0px 52px;
+  }
+
+  &__password-field-label {
+    font-family: "Quintessential", cursive;
+    margin: 7px 0px 0px 52px;
+    color: #FFCF6E;
+  }
+
+  &__password-field {
+    width: 170px;
+    margin: 8px 0px 0px 53px;
+  }
+
+  &__submit-login-info {
+    width: 90px;
+    margin: 26px 0px 0px 98px;
+  }
+
+  &__login-button {
+    position: absolute;
+    height: 50px;
+    width: 150px;
+    top: 627px;
+    left: 66px;
+    cursor: pointer;
+  }
+}
