@@ -13,9 +13,9 @@ import {
   getSinglePermanentPatron,
   getAllRooms,
   getAllBookings,
-  addNewVictIMeanClient,
-  deleteSingleBookingAsIfThatWerePossbile
-} from './apiCalls';
+  addNewVictIMeanClient 
+}
+from './apiCalls';
 
 let rooms;
 let roomRepo;
@@ -81,7 +81,8 @@ function parseSinglePatron__checkInputFields(
       patron = new Patron(singlePatronData)
       patron.findPatronBookings(patron, roomRepo)
       domManipulation.displayPatronDashboard__displayTopCard(patron, roomRepo)
-    })
+      patron.sortBookings()
+    });
 
   } else if (!checkBeginningChars || !checkEndNumsMin || !checkEndNumsMax
     || !checkMinLength || !checkMaxLength) {
@@ -93,31 +94,27 @@ function parseSinglePatron__checkInputFields(
 };
 
 function filterAvailableRooms__setupChecks() {
+  event.preventDefault()
   bookingStartDate = document.getElementById('bookingStartDate');
-  const filteredRoomsByType = [];
 
-  filterAvailableRooms__checkFields(bookingStartDate, filteredRoomsByType);
+  filterAvailableRooms__checkFields(bookingStartDate);
 };
 
-function filterAvailableRooms__checkFields(bookingStartDate, filteredRoomsByType) {
+function filterAvailableRooms__checkFields(bookingStartDate) {
+  const filteredRoomsByType = [];
   roomRepo.rooms.forEach(room => {
     filteredListItems.forEach(item => {
       const checkClassListValue = (item.classList.value === 'checked');
       const checkInnerText = (item.innerText.toLowerCase() === room.roomType);
       const checkBookedRoomDates = room.daysBookedFor.includes(bookingStartDate.value.split('-').join('/'));
-      const checkForDateValue = !bookingStartDate.value;
-      const checkForDuplicates = filteredRoomsByType.includes(room)
+      const checkForDateValue = (bookingStartDate.value === '')
 
-      if (!checkClassListValue || checkBookedRoomDates) {
-        return
+      if (checkForDateValue) {
+        domManipulation.displayDateUndefinedMessage()
 
-      } else if (checkClassListValue && checkInnerText && !checkBookedRoomDates
-        && !checkForDateValue) {
+      } else if (checkClassListValue && checkInnerText && !checkBookedRoomDates && !checkForDateValue
+        || !checkBookedRoomDates && !checkForDateValue ) {
           filteredRoomsByType.push(room);
-
-      } else if (!checkClassListValue && !checkInnerText && !checkBookedRoomDates && !checkForDateValue) {
-        filteredRoomsByType.push(room);
-
       }
     })
   })

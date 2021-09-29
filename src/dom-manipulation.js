@@ -1,5 +1,7 @@
 import scripts from './scripts.js';
 
+const main = document.getElementById('main');
+const backgroundImage = document.getElementById('backgroundImage');
 const usernameField = document.getElementById('usernameField');
 const passwordField = document.getElementById('passwordField');
 const submitLoginInfo = document.getElementById('submitLoginInfo');
@@ -19,13 +21,13 @@ const rightCardText = document.getElementById('rightCardText');
 const topCardImage = document.getElementById('imageTopCard');
 const leftCardImage = document.getElementById('imageLeftCard');
 const rightCardImage = document.getElementById('imageRightCard');
-const main = document.getElementById('main');
-const backgroundImage = document.getElementById('backgroundImage');
-const filtered = document.getElementById('filtered');
 const calendar = document.getElementById('calendar');
+const filtered = document.getElementById('filtered');
 const availableRooms = document.getElementById('availableRooms');
+const dateErrorMessage = document.getElementById('dateErrorMessage');
 const checkAvailability = document.getElementById('checkAvailability');
 const chooseBookingOptions = document.getElementById('chooseBookingOptions');
+const noDatesAvailableApologyMessage = document.getElementById('noDatesAvailableApologyMessage');
 
 let submitBookingButton;
 let bookingStartDate;
@@ -50,7 +52,6 @@ function displayPatronDashboard__displayLeftCard(patron, roomRepo) {
 };
 
 function displayPatronDashboard__displayRightCard(patron, roomRepo) {
-  console.log(patron)
   rightCard.innerHTML = '<p class="outer-text">My Present Bookings:</p>';
   patron.upcoming.forEach(upcoming => {
     rightCard.innerHTML += `
@@ -132,7 +133,7 @@ function show(ele) {
 };
 
 let domManipulation = {
-  displayPatronDashboard__displayTopCard(patron, roomRepo) {
+  displayPatronDashboard__changeView(patron, roomRepo) {
     hidePatronLoginFields();
     hide(leftCardText);
     hide(rightCardText);
@@ -140,6 +141,11 @@ let domManipulation = {
     hide(checkAvailability);
     hide(chooseBookingOptions);
     show(main);
+
+    displayPatronDashboard__displayTopCard(patron, roomRepo)
+  },
+
+  displayPatronDashboard__displayTopCard(patron, roomRepo) {
     topCard.innerHTML = `
       <article class="welcome">
         <img class="welcome-image" src="./images/welcome-image.png" alt="">
@@ -151,6 +157,8 @@ let domManipulation = {
   },
 
   displayRoomsByType(filteredRoomsByType, patron) {
+    hide(dateErrorMessage);
+    hide(noDatesAvailableApologyMessage);
     show(availableRooms);
 
     availableRooms.innerHTML = '';
@@ -201,7 +209,13 @@ let domManipulation = {
   },
 
   displayErrorMessage() {
-    console.log('error');
+    hide(dateErrorMessage);
+    show(noDatesAvailableApologyMessage);
+  },
+
+  displayDateUndefinedMessage() {
+    hide(noDatesAvailableApologyMessage);
+    show(dateErrorMessage);
   },
 
   toggleClassName(ele, listItems) {
