@@ -26,7 +26,8 @@ body::-webkit-scrollbar {
   bottom: 243px;
 }
 
-main {
+main,
+.new-booking {
   position: absolute;
   display: flex;
   flex-wrap: wrap;
@@ -34,6 +35,48 @@ main {
   flex-direction: row;
   margin-left: 296px;
 }
+
+li {
+ display: block;
+ transition-duration: 0.5s;
+}
+
+li:hover {
+  cursor: pointer;
+}
+
+ul li ul {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  transition: all 0.5s ease;
+  margin-top: 1rem;
+  left: 0;
+  display: none;
+}
+
+ul li:hover > ul,
+ul li ul:hover,
+ul li ul:focus {
+  visibility: visible;
+  opacity: 1;
+  display: block;
+}
+
+ul li ul li {
+  clear: both;
+  width: 100%;
+}
+
+ul li:focus-within > ul {
+  visibility: visible;
+  opacity: 1;
+  display: block;
+}
+
+// li:focus-within a {
+//   outline: none;
+// }
 
 .home-logo {
   display: flex;

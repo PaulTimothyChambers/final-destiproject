@@ -3,11 +3,12 @@ class Patron {
     this.id = patronsData.id;
     this.name = patronsData.name;
     this.bookings = [];
+    this.upcoming = [];
   }
 
   findTotalCostOfRooms(roomRepo) {
     const totalCost = this.bookings.reduce((acc, booking) => {
-      roomRepo.rooms.rooms.forEach(room => {
+      roomRepo.rooms.forEach(room => {
         if (booking.roomNumber === room.number) {
           acc += room.costPerNight;
         }
@@ -15,7 +16,6 @@ class Patron {
       })
       return acc
     }, 0)
-    console.log('this', totalCost)
     return totalCost
   }
 }
