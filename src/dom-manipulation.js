@@ -142,7 +142,7 @@ let domManipulation = {
     hide(chooseBookingOptions);
     show(main);
 
-    displayPatronDashboard__displayTopCard(patron, roomRepo)
+    domManipulation.displayPatronDashboard__displayTopCard(patron, roomRepo)
   },
 
   displayPatronDashboard__displayTopCard(patron, roomRepo) {
