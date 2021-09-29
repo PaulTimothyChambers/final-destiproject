@@ -1,5 +1,9 @@
-@import '_variables';
-@import 'normalize';
+@import './_variables';
+@import './_normalize';
+@import './_dropdown';
+@import './_dashboard';
+@import './login';
+
 
 body {
   display: flex;
@@ -12,16 +16,6 @@ body {
 
 body::-webkit-scrollbar {
   display: none;
-}
-
-.navigation {
-  display: flex;
-  position: fixed;
-  height: 100vh;
-  width: 20vw;
-  background-color: #132F3E;
-  border-radius: 9px;
-  bottom: 243px;
 }
 
 main,
@@ -57,169 +51,53 @@ main,
   left: 308px;
 }
 
-li {
- display: block;
- transition-duration: 0.5s;
-}
-
-li:hover {
-  cursor: pointer;
-}
-
-ul li ul {
-  visibility: hidden;
-  opacity: 0;
-  position: absolute;
-  transition: all 0.5s ease;
-  margin-top: 1rem;
-  left: 0;
-  display: none;
-}
-
-ul li:hover > ul,
-ul li ul:hover,
-ul li ul:focus {
-  visibility: visible;
-  opacity: 1;
-  display: block;
-}
-
-ul li ul li {
-  clear: both;
-  width: 100%;
-}
-
-ul li:focus-within > ul {
-  visibility: visible;
-  opacity: 1;
-  display: block;
-}
-
-.navigation__home-logo {
+.navigation {
   display: flex;
-  position: absolute;
-  height: 112px;
-  width: 287px;
-  top: 301px;
+  position: fixed;
+  height: 100vh;
+  width: 20vw;
+  background-color: #132F3E;
+  border-radius: 9px;
+  bottom: 243px;
+
+  &__home-logo {
+    display: flex;
+    position: absolute;
+    height: 112px;
+    width: 287px;
+    top: 301px;
+  }
 }
 
-.home-logo__hotel-logo {
-  height: 89px;
-  width: 226px;
-  padding: 31px;
-  opacity: 26%;
-}
+.home-logo {
+  &__hotel-logo {
+    height: 89px;
+    width: 226px;
+    padding: 31px;
+    opacity: 26%;
+  }
 
-.home-logo__hotel-logo-2 {
-  position: absolute;
-  height: 44px;
-  width: 249px;
-  margin-top: 102px;
-  padding: 19px;
-  opacity: 55%;
-}
+  &__hotel-logo-2 {
+    position: absolute;
+    height: 44px;
+    width: 249px;
+    margin-top: 102px;
+    padding: 19px;
+    opacity: 55%;
+  }
 
-.home-logo__home-name {
-  display: flex;
-  text-align: center;
-  position: absolute;
-  font-family: "Quintessential", cursive;
-  height: 154px;
-  width: 287px;
-  margin: -11px 0px 0px 0px;
-  font-size: 49px;
-  font-weight: bolder;
-  color: #F00000;
-}
-
-.login__login-button {
-  position: absolute;
-  height: 50px;
-  width: 150px;
-  top: 627px;
-  left: 66px;
-  cursor: pointer;
-}
-
-.welcome-message {
-  display: flex;
-  justify-content: center;
-  font-family: "Quintessential", cursive;
-}
-
-.new-booking-button {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  font-family: "Quintessential", cursive;
-  height: 42px;
-  width: 345px;
-  margin: 172px 0px 0px 352px;
-  font-size: 26px;
-}
-
-.wink-wink {
-  font-size: 9px;
-}
-
-.top-card__top,
-.mid-card__left,
-.mid-card__right,
-.bottom-card__bottom {
-  position: absolute;
-  height: 40vh;
-  width: 72vw;
-  margin: 47px;
-  background-color: #D4815E;
-  border: 4px solid;
-  border-radius: 20px;
-  opacity: 100%;
-}
-
-.bottom-card,
-.mid-card,
-.top-card {
-  display: flex;
-  flex-direction: row;
-  position: absolute;
-  height: 59vh;
-  width: 79vw;
-  background-color: #FFE9BD;
-  opacity: 70%;
-}
-
-.top-card {
-  height: 48vh;
-}
-
-.bottom-card {
-  top: 698px;
-}
-
-.mid-card {
-  height: 57vh;
-  top: 338px;
-}
-
-.top-card__top-alt,
-.mid-card__left-alt,
-.mid-card__right-alt,
-.bottom-card__bottom-alt {
-  background-color: #D4815E;
-}
-
-.mid-card__left {
-  width: 32.4vw;
-  overflow-x: hidden;
-  overflow-y: auto;
-}
-
-.mid-card__right {
-  width: 32.4vw;
-  top: 0px;
-  left: 569px;
-  overflow-x: hidden;
-  overflow-y: auto;
+  &__home-name {
+    display: flex;
+    text-align: center;
+    position: absolute;
+    font-family: "Quintessential", cursive;
+    height: 154px;
+    width: 287px;
+    margin: -11px 0px 0px 0px;
+    font-size: 49px;
+    font-weight: bolder;
+    color: #F00000;
+  }
 }
 
 .background-image {
@@ -227,118 +105,6 @@ ul li:focus-within > ul {
   height: 100vh;
   width: 100vw;
   opacity: 30%;
-}
-
-.right-card__image {
-  display: flex;
-  position: absolute;
-  height: 40vh;
-  width: 32.4vw;
-  border-radius: 15px;
-  opacity: 25%;
-}
-
-.left-card__image {
-  display: flex;
-  position: absolute;
-  height: 40vh;
-  width: 32.4vw;
-  border-radius: 15px;
-  opacity: 25%;
-}
-
-.top-card__image {
-  display: flex;
-  position: absolute;
-  height: 40vh;
-  width: 72vw;
-  border-radius: 15px;
-  opacity: 45%;
-}
-
-.left-card__text-one,
-.left-card__text-two {
-  position: absolute;
-  text-align: center;
-  font-family: "Quintessential";
-  font-weight: bolder;
-  font-size: 42px;
-  top: 139px;
-  color: #F00000;
-}
-
-.left-card__text-one {
-  top: 9px;
-  left: 30px;
-}
-
-.left-card__text-two {
-  top: 167px;
-  left: 140px;
-  color: #13143E;
-}
-
-.right-card__text-one,
-.right-card__text-two {
-  position: absolute;
-  text-align: center;
-  font-family: "Quintessential";
-  font-weight: bolder;
-  font-size: 42px;
-  top: 139px;
-  color: #F00000;
-}
-
-.right-card__text-one {
-  top: 4px;
-  left: 19px;
-}
-
-.right-card__text-two {
-  font-size: 47px;
-  top: 111px;
-  left: 137px;
-  color: #13143E;
-}
-
-.tiny-words {
-  font-size: 5px;
-}
-
-.login {
-  display: flex;
-  flex-direction: column;
-  width: 288px;
-}
-
-.login__username-field-label {
-  font-family: "Quintessential", cursive;
-  margin: 533px 0px 0px 51px;
-  color: #FFCF6E;
-}
-.login__username-field {
-  width: 170px;
-  margin: 6px 0px 0px 52px;
-}
-
-.login__password-field-label {
-  font-family: "Quintessential", cursive;
-  margin: 7px 0px 0px 52px;
-  color: #FFCF6E;
-}
-
-.login__password-field {
-  width: 170px;
-  margin: 8px 0px 0px 53px;
-}
-
-.login__submit-login-info {
-  width: 90px;
-  margin: 26px 0px 0px 98px;
-}
-
-.checked {
-  background-color: pink;
 }
 
 .hidden {
