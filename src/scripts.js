@@ -13,7 +13,7 @@ import {
   getSinglePermanentPatron,
   getAllRooms,
   getAllBookings,
-  addNewVictIMeanClient 
+  addNewVictIMeanClient
 }
 from './apiCalls';
 
@@ -25,7 +25,7 @@ let patron;
 
 window.addEventListener('load', instantiateRoomRepo);
 domManipulation.submitLoginInfo.addEventListener('click', parseAllPatrons);
-domManipulation.checkAvailability.addEventListener('click', () => filterAvailableRooms__setupChecks());
+domManipulation.checkAvailability.addEventListener('click', filterAvailableRooms__checkDate);
 domManipulation.patronLoginButton.addEventListener('click', () => domManipulation.displayPatronLogin());
 
 function instantiateRoomRepo() {
@@ -93,41 +93,40 @@ function parseSinglePatron__checkInputFields(
   }
 };
 
-function filterAvailableRooms__setupChecks() {
-  event.preventDefault()
+function filterAvailableRooms__checkDate() {
+  let filteredRoomsByType = [];
   bookingStartDate = document.getElementById('bookingStartDate');
 
-  filterAvailableRooms__checkFields(bookingStartDate);
-};
-
-function filterAvailableRooms__checkFields(bookingStartDate) {
-  const filteredRoomsByType = [];
   roomRepo.rooms.forEach(room => {
-    filteredListItems.forEach(item => {
-      const checkClassListValue = (item.classList.value === 'checked');
-      const checkInnerText = (item.innerText.toLowerCase() === room.roomType);
-      const checkBookedRoomDates = room.daysBookedFor.includes(bookingStartDate.value.split('-').join('/'));
-      const checkForDateValue = (bookingStartDate.value === '')
+    const checkBookedRoomDates = room.daysBookedFor.includes(bookingStartDate.value.split('-').join('/'));
+    const checkForDateValue = (bookingStartDate.value === '');
+    // const checkForDuplicates = filteredRoomsByType.includes(room);
+    if (checkForDateValue) {
+      domManipulation.displayDateUndefinedMessage()
 
-      if (checkForDateValue) {
-        domManipulation.displayDateUndefinedMessage()
-
-      } else if (checkClassListValue && checkInnerText && !checkBookedRoomDates && !checkForDateValue
-        || !checkBookedRoomDates && !checkForDateValue ) {
-          filteredRoomsByType.push(room);
-      }
-    })
+    } else if (!checkBookedRoomDates && !checkForDateValue) { // && !checkForDuplicates
+      filteredRoomsByType.push(room);
+    }
   })
-
-  filterAvailableRooms__finalCheck(filteredRoomsByType)
+  filterAvailableRooms__checkFilters(filteredRoomsByType);
 };
 
-function  filterAvailableRooms__finalCheck(filteredRoomsByType) {
-  if (filteredRoomsByType.length > 0) {
-    domManipulation.displayRoomsByType(filteredRoomsByType, patron);
-  } else {
-    domManipulation.displayErrorMessage();
-  }
+function filterAvailableRooms__checkFilters(filteredRoomsByType) {
+  filteredListItems.forEach(item => {
+    const checkClassListValue = (item.classList.value === 'checked');
+
+    if (checkClassListValue) {
+      filteredRoomsByType = roomRepo.rooms.filter(room => {
+        return room.roomType === item.innerText.toLowerCase()
+      })
+
+    } else if (filteredRoomsByType.length > 0) {
+      domManipulation.displayRoomsByType(filteredRoomsByType, patron)
+
+    } else {
+      domManipulation.displayErrorMessage()
+    }
+  })
 };
 
 let scripts = {
@@ -148,7 +147,7 @@ let scripts = {
 
     addNewVictIMeanClient(newVictim, patron)
     .then(data => patron = new Patron(data))
-    .then(domManipulation.displayPatronDashboard__displayTopCard(patron, roomRepo));
+    .then(domManipulation.displayPatronDashboard__changeView(patron, roomRepo));
   }
 }
 
