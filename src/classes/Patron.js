@@ -18,6 +18,14 @@ class Patron {
     }, 0)
     return totalCost
   }
+
+  findPatronBookings(patron, roomRepo) {
+    roomRepo.bookings.forEach(booking => {
+      if (booking.userID === patron.id){
+        patron.bookings.push(booking)
+      }
+    })
+  }
 }
 
 export default Patron;
