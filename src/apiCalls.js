@@ -34,18 +34,8 @@ function addNewVictIMeanClient(newVictim, patron) {
     body: JSON.stringify(newVictim),
     headers: { 'Content-Type': 'application/json' }
   })
-  .then(response => response.json())
-  .then(data => patron.upcoming.push({date: data.newBooking.date, room: data.newBooking.roomNumber}))
-  .catch(error => console.log(error))
-}
-
-function deleteSingleBookingAsIfThatWerePossbile() {
-  return fetch(`${apiEndpoint}/api/v1/bookings/<id>`, {
-    method: 'DELETE',
-    headers: { 'Content-Type': 'application/json' }
-  })
   .then(response => checkResponse(response))
-  .then(data => data)
+  .then(data => patron.upcoming.push({date: data.newBooking.date, room: data.newBooking.roomNumber}))
   .catch(error => console.log(error))
 }
 
@@ -61,6 +51,5 @@ export {
   getSinglePermanentPatron,
   getAllRooms,
   getAllBookings,
-  addNewVictIMeanClient,
-  deleteSingleBookingAsIfThatWerePossbile
+  addNewVictIMeanClient
 }
