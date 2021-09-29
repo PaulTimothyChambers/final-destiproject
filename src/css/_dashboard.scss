@@ -1,0 +1,162 @@
+.welcome-message {
+  display: flex;
+  justify-content: center;
+  font-family: "Quintessential", cursive;
+}
+
+.new-booking-button {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-family: "Quintessential", cursive;
+  height: 42px;
+  width: 345px;
+  margin: 172px 0px 0px 352px;
+  font-size: 26px;
+}
+
+.wink-wink {
+  font-size: 9px;
+}
+
+.top-card__top,
+.mid-card__left,
+.mid-card__right,
+.bottom-card__bottom {
+  position: absolute;
+  height: 40vh;
+  width: 72vw;
+  margin: 47px;
+  background-color: #D4815E;
+  border: 4px solid;
+  border-radius: 20px;
+  opacity: 100%;
+}
+
+.bottom-card,
+.mid-card,
+.top-card {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  height: 59vh;
+  width: 79vw;
+  background-color: #FFE9BD;
+  opacity: 70%;
+}
+
+.top-card {
+  height: 48vh;
+
+  &__image {
+    display: flex;
+    position: absolute;
+    height: 40vh;
+    width: 72vw;
+    border-radius: 15px;
+    opacity: 45%;
+  }
+}
+
+.bottom-card {
+  top: 698px;
+}
+
+.mid-card {
+  height: 57vh;
+  top: 338px;
+}
+
+.top-card__top-alt,
+.mid-card__left-alt,
+.mid-card__right-alt,
+.bottom-card__bottom-alt {
+  background-color: #D4815E;
+}
+
+.mid-card {
+  &__left {
+    width: 32.4vw;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  &__right {
+    width: 32.4vw;
+    top: 0px;
+    left: 569px;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+}
+
+.left-card {
+  &__image {
+    display: flex;
+    position: absolute;
+    height: 40vh;
+    width: 32.4vw;
+    border-radius: 15px;
+    opacity: 25%;
+  }
+
+  &__text-one,
+  &__text-two {
+    position: absolute;
+    text-align: center;
+    font-family: "Quintessential";
+    font-weight: bolder;
+    font-size: 42px;
+    top: 139px;
+    color: #F00000;
+  }
+
+  &__text-one {
+    top: 9px;
+    left: 30px;
+  }
+
+  &__text-two {
+    top: 167px;
+    left: 140px;
+    color: #13143E;
+  }
+}
+
+.right-card {
+  &__text-one,
+  &__text-two {
+    position: absolute;
+    text-align: center;
+    font-family: "Quintessential";
+    font-weight: bolder;
+    font-size: 42px;
+    top: 139px;
+    color: #F00000;
+  }
+
+  &__image {
+    display: flex;
+    position: absolute;
+    height: 40vh;
+    width: 32.4vw;
+    border-radius: 15px;
+    opacity: 25%;
+  }
+
+  &__text-one {
+    top: 4px;
+    left: 19px;
+  }
+
+  &__text-two {
+    font-size: 47px;
+    top: 111px;
+    left: 137px;
+    color: #13143E;
+  }
+}
+
+.tiny-words {
+  font-size: 5px;
+}
