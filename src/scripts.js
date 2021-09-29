@@ -1,88 +1,157 @@
 import './css/base.scss';
-import './images/turing-logo.png';
 import './images/logo-2.png';
+import './images/bg-img.png';
 import './images/bg-img-4.png';
-import { getAllPermanentPatrons,
+import './images/bg-img-3.png';
+import './images/bg-img-2.png';
+import './images/turing-logo.png';
+import Patron from './classes/Patron.js';
+import RoomRepo from './classes/RoomRepo.js';
+import domManipulation from './dom-manipulation.js';
+import {
+  getAllPermanentPatrons,
   getSinglePermanentPatron,
   getAllRooms,
   getAllBookings,
   addNewVictIMeanClient,
-  deleteSingleBookingAsIfThatWerePossbile } from './apiCalls';
-import domManipulation from './dom-manipulation.js';
-import RoomRepo from './classes/RoomRepo.js';
-import Patron from './classes/User.js';
+  deleteSingleBookingAsIfThatWerePossbile
+} from './apiCalls';
 
+let rooms;
 let roomRepo;
+let filteredListItems;
+let bookingStartDate;
 let patron;
-let bookings;
 
 window.addEventListener('load', instantiateRoomRepo);
 domManipulation.submitLoginInfo.addEventListener('click', parseAllPatrons);
+domManipulation.checkAvailability.addEventListener('click', () => filterAvailableRooms__setupChecks());
 domManipulation.patronLoginButton.addEventListener('click', () => domManipulation.displayPatronLogin());
-
-function parseAllPatrons() {
-  getAllPermanentPatrons().then(patronsData => {
-    parseSinglePatron(patronsData);
-  })
-}
-
-function parseSinglePatron(patronsData) {
-  const patronID = domManipulation.usernameField.value;
-  const checkOne = patronID.startsWith('customer');
-  const checkTwo = parseInt(patronID.slice(8)) > 0;
-  const checkThree = parseInt(patronID.slice(8)) <= 50;
-  const checkFour = patronID.length >= 9;
-  const checkFive = patronID.length < 11;
-  const checkSix = (domManipulation.passwordField.value === 'overlook2021')
-  if (checkOne && checkTwo && checkThree && checkFour && checkFive && checkSix) {
-    const idToGet = patronID.slice(8);
-    getSinglePermanentPatron(idToGet)
-    .then(singlePatronData => {
-      patron = new Patron(singlePatronData)
-      roomRepo.findPatronBookings(patron)
-      domManipulation.displayPatronDashboard(patron, roomRepo)
-      console.log(roomRepo)
-    })
-  } else if (!checkOne || !checkTwo || !checkThree || !checkFour || !checkFive){
-    domManipulation.displayUsernameErrorMessage();
-  } else {
-    domManipulation.displayPasswordErrorMessage();
-  }
-}
 
 function instantiateRoomRepo() {
   getAllBookings()
-  .then(bookingsData => getAllRooms(bookingsData)
+  .then(bookingsData => rooms = getAllRooms(bookingsData)
   .then(roomsData => roomRepo = new RoomRepo(roomsData, bookingsData)))
-}
+};
+
+function parseAllPatrons() {
+  getAllPermanentPatrons().then(patronsData => {
+    parseSinglePatron__initiateChecks(patronsData);
+  })
+};
+
+function parseSinglePatron__initiateChecks(patronsData) {
+  roomRepo.findAllRoomBookings(patronsData);
+
+  const patronID = domManipulation.usernameField.value;
+  const checkBeginningChars = patronID.startsWith('customer');
+  const checkEndNumsMin = parseInt(patronID.slice(8)) > 0;
+  const checkEndNumsMax = parseInt(patronID.slice(8)) <= 50;
+  const checkMinLength = patronID.length >= 9;
+  const checkMaxLength = patronID.length < 11;
+  const checkPassword = (domManipulation.passwordField.value === 'overlook2021');
+
+  parseSinglePatron__checkInputFields(
+    patronID,
+    checkBeginningChars,
+    checkEndNumsMin,
+    checkEndNumsMax,
+    checkMinLength,
+    checkMaxLength,
+    checkPassword
+  )
+};
+
+function parseSinglePatron__checkInputFields(
+  patronID,
+  checkBeginningChars,
+  checkEndNumsMin,
+  checkEndNumsMax,
+  checkMinLength,
+  checkMaxLength,
+  checkPassword
+) {
+
+  if (checkBeginningChars && checkEndNumsMin && checkEndNumsMax
+    && checkMinLength && checkMaxLength && checkPassword) {
+    const idToGet = patronID.slice(8);
+
+    getSinglePermanentPatron(idToGet)
+    .then(singlePatronData => {
+      patron = new Patron(singlePatronData)
+      patron.findPatronBookings(patron, roomRepo)
+      domManipulation.displayPatronDashboard__displayTopCard(patron, roomRepo)
+    })
+
+  } else if (!checkBeginningChars || !checkEndNumsMin || !checkEndNumsMax
+    || !checkMinLength || !checkMaxLength) {
+    domManipulation.displayUsernameErrorMessage();
+
+  } else {
+    domManipulation.displayPasswordErrorMessage();
+  }
+};
+
+function filterAvailableRooms__setupChecks() {
+  bookingStartDate = document.getElementById('bookingStartDate');
+  const filteredRoomsByType = [];
+
+  filterAvailableRooms__checkFields(bookingStartDate, filteredRoomsByType);
+};
+
+function filterAvailableRooms__checkFields(bookingStartDate, filteredRoomsByType) {
+  roomRepo.rooms.forEach(room => {
+    filteredListItems.forEach(item => {
+      const checkClassListValue = (item.classList.value === 'checked');
+      const checkInnerText = (item.innerText.toLowerCase() === room.roomType);
+      const checkBookedRoomDates = room.daysBookedFor.includes(bookingStartDate.value.split('-').join('/'));
+      const checkForDateValue = !bookingStartDate.value;
+      const checkForDuplicates = filteredRoomsByType.includes(room)
+
+      if (!checkClassListValue || checkBookedRoomDates) {
+        return
+
+      } else if (checkClassListValue && checkInnerText && !checkBookedRoomDates
+        && !checkForDateValue) {
+          filteredRoomsByType.push(room);
+
+      } else if (!checkClassListValue && !checkInnerText && !checkBookedRoomDates && !checkForDateValue) {
+        filteredRoomsByType.push(room);
+
+      }
+    })
+  })
+
+  filterAvailableRooms__finalCheck(filteredRoomsByType)
+};
+
+function  filterAvailableRooms__finalCheck(filteredRoomsByType) {
+  if (filteredRoomsByType.length > 0) {
+    domManipulation.displayRoomsByType(filteredRoomsByType, patron);
+  } else {
+    domManipulation.displayErrorMessage();
+  }
+};
 
 let scripts = {
-  filterAvailableRooms(filteredRoomType) {
-    const filteredRoomsByType = roomRepo.rooms.filter(room => {
-      return room.roomType === filteredRoomType.toLowerCase();
+  selectNewElements() {
+    filteredListItems = document.querySelectorAll('#filteredListItem');
+    filteredListItems.forEach(item => {
+      item.addEventListener('click', () => domManipulation.toggleClassName(item, filteredListItems));
     })
-    domManipulation.displayRoomsByType(filteredRoomsByType);
   },
 
-  checkDate(dateSelected) {
-    let freeOfBookings = roomRepo.rooms;
-    roomRepo.bookings.forEach(booking => {
-      roomRepo.rooms.forEach(room => {
-        if (dateSelected.split('-') === booking.date.split('/') && booking.roomNumber === room.number) {
-          freeOfBookings.splice(freeOfBookings.indexOf(room), 1)
-          console.log(freeOfBookings)
-        }
-      })
-      // if (booking.date === bookingStartDate.value.format('YYYY/MM/DD')) {
-      //   roomRepo.rooms
-      // }
-    })
-    // foundBookings.forEach(bookedRoom => {
-    //   if (bookedRoom {
-    //
-    // })
+  makePOSTRequest() {
+    let roomNumber = parseInt(event.target.closest('article').id)
+    const newVictim = {
+      userID: patron.id,
+      date: bookingStartDate.value.split('-').join('/'),
+      roomNumber: roomNumber
+    }
 
-
+    addNewVictIMeanClient(newVictim, patron)
+    .then(data => patron = new Patron(data))
+    .then(domManipulation.displayPatronDashboard__displayTopCard(patron, roomRepo));
   }
 }
 
