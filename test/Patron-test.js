@@ -44,10 +44,10 @@ describe('Patron', () => {
     assert.deepEqual(patron.bookings[0].date, '2020/04/22');
   });
 
-  it.skip('should be able to record all upcoming bookings for any logged-in patron', () => {
+  it('should be able to sort/separate out all upcoming bookings for any logged-in patron', () => {
     roomRepo = new RoomRepo(roomsSampleData, bookingsSampleData);
-    assert.deepEqual(patron.bookings, []);
-    patron.findPatronBookings(patron);
-    assert.deepEqual(patron.bookings[0], ['2020/04/22']);
+    assert.deepEqual(patron.upcoming, []);
+    patron.sortBookings();
+    assert.deepEqual(patron.upcoming[0], bookingsSampleData[10]);
   });
 })

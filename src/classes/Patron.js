@@ -28,18 +28,14 @@ class Patron {
   }
 
   sortBookings() {
-    console.log(this.bookings)
-    console.log(this.upcoming)
-    const currentDate = dayjs().format('YYYY-MM-DD').split('-').join('');
+    const currentDate = dayjs().format('YYYY-MM-DD').split('-').join(''); //replace with today's date for testing suite (i.e. 20212909)
     this.bookings.forEach(booking => {
       const dateOfBooking = booking.date.split('/').join('');
       if (parseInt(dateOfBooking) > parseInt(currentDate)) {
-        this.upcoming.push(booking);
         this.bookings.splice(this.bookings[this.bookings.indexOf(booking)], 1);
+        this.upcoming.push(booking);
       }
     })
-    console.log(this.bookings)
-    console.log(this.upcoming)
   }
 }
 

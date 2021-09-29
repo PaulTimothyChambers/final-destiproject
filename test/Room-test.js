@@ -51,7 +51,7 @@ describe('Room', () => {
   it('should be able to find all days it is/was booked for', () => {
     roomRepo = new RoomRepo(roomsSampleData, bookingsSampleData)
     assert.deepEqual(room.daysBookedFor, []);
-    room.findSingleRoomBookings(bookingsSampleData.bookings, roomRepo)
+    room.findSingleRoomBookings(roomRepo)
     assert.deepEqual(room.daysBookedFor, ['2020/02/05', '2020/01/11']);
   });
 })
