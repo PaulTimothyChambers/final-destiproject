@@ -1,3 +1,5 @@
+import domManipulation from '../dom-manipulation';
+
 class Patron {
   constructor(patronsData) {
     this.id = patronsData.id;
@@ -19,20 +21,21 @@ class Patron {
     return totalCost
   }
 
-  findPatronBookings(patron, roomRepo) {
-    roomRepo.bookings.forEach(booking => {
-      if (booking.userID === patron.id){
-        patron.bookings.push(booking)
-      }
+  findPatronBookings(roomRepo) {
+    const allPatronBookings = roomRepo.bookings.filter(booking => {
+      return booking.userID === this.id;
     })
+    this.bookings = allPatronBookings;
+    this.sortBookings();
   }
 
   sortBookings() {
-    const currentDate = 20212909; //replace with today's date for testing suite (i.e. 20212909)
+    const currentDate = dayjs().format('YYYY-MM-DD').split('-').join(''); //replace with today's date for testing suite (i.e. 20212909)
     this.bookings.forEach(booking => {
       const dateOfBooking = booking.date.split('/').join('');
-      if (parseInt(dateOfBooking) > parseInt(currentDate)) {
-        this.bookings.splice(this.bookings[this.bookings.indexOf(booking)], 1);
+      if (dateOfBooking > currentDate) {
+        const splicedEle = this.bookings.splice(this.bookings.indexOf(booking), 1);
+
         this.upcoming.push(booking);
       }
     })
