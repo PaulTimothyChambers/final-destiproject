@@ -17,57 +17,42 @@
         <img class="home-logo__hotel-logo-2" src="./images/logo-2.png" alt="decorative, flowing, and ornate pen-strokes underlining the hotel california's logo">
         <p class="home-logo__home-name">Hotel California</p>
       </article>
-      <!-- <article class="login">
+      <article class="login">
         <button class="login__login-button" id="patronLoginButton">Permanent Login</button>
         <label class="login__username-field-label hidden" id="usernameFieldLabel" for="username field">Patron</label>
         <input class="login__username-field hidden" id="usernameField" type="text" name="username field">
         <label class="login__password-field-label hidden" id="passwordFieldLabel" for="password field">Password</label>
         <input class="login__password-field hidden" id="passwordField" type="text" name="password field">
         <button class="login__submit-login-info hidden" id="submitLoginInfo">Login</button>
-      </article> -->
+      </article>
     </aside>
     <main id="main">
       <section class="top-card" id="topCardTop">
         <article class="top-card__top" id="topCard">
-          <article class="welcome">
-            <img class="welcome-image" src="./images/welcome-image.png" alt="">
-            <p class="welcome-message">Welcome Kevin!</p>
-            <button class="new-booking-button" id="newBookingButton">Make "New" Booking<a class="wink-wink">*wink* *wink*</a></button>
-          </article>
-          <img class="top-card__image hidden" id="imageTopCard" src="./images/bg-img-2.png" alt="">
-          <p class="top-card__intro-text-one hidden">HOTEL CALIFORNIA</p>
-          <p class="top-card__intro-text-two hidden">when you stay here, you STAY here</p>
+          <img class="top-card__image" id="imageTopCard" src="./images/bg-img-2.png" alt="">
+          <p class="top-card__intro-text-one">HOTEL CALIFORNIA</p>
+          <p class="top-card__intro-text-two">when you stay here, you STAY here</p>
         </article>
+        <button class="new-booking-button hidden" id="newBookingButton">Make "New" Booking<a class="wink-wink">*wink* *wink*</a></button>
       </section>
       <section class="mid-card">
         <div class="mid-card__left" id="midCardLeft">
-          <img class="left-card__image hidden" id="imageLeftCard" src="./images/bg-img.png" alt="">
-          <p class="left-card__text-one hidden" id="leftCardText">Is this an EXIT?</p>
-          <p class="left-card__text-two hidden" id="leftCardTextTwo">or a MIRAGE?</p>
+          <img class="left-card__image" id="imageLeftCard" src="./images/bg-img.png" alt="">
+          <p class="left-card__text-one" id="leftCardText">Is this an EXIT?</p>
+          <p class="left-card__text-two" id="leftCardTextTwo">or a MIRAGE?</p>
           <article class="my-bookings">
             <p class="bookings"></p>
-            <ul>
-              <li class="list-my-bookings" id="leftCard">
-                <p>Date: 2020/04/22</p>
-                <p>Room: 15</p>
-                <p>Date: 2020/01/30</p>
-                <p>Room: 13</p>
-                <p>Date: 2022/01/19</p>
-                <p>Room: 8</p>
-              </li>
+            <ul class="list-my-bookings" id="leftCard">
             </ul>
-          </article>
+          </article>`
         </div>
         <div class="mid-card__right" id="midCardRight">
-          <img class="right-card__image hidden" id="imageRightCard" src="./images/bg-img-3.png" alt="">
-          <p class="right-card__text-one hidden" id="rightCardText">Come Explore Our</p>
-          <p class="right-card__text-two hidden" id="rightCardTextTwo">ENDLESS HALLWAYS</p>
+          <img class="right-card__image" id="imageRightCard" src="./images/bg-img-3.png" alt="">
+          <p class="right-card__text-one" id="rightCardText">Come Explore Our</p>
+          <p class="right-card__text-two" id="rightCardTextTwo">ENDLESS HALLWAYS</p>
           <article class="my-bookings">
             <p class="bookings"></p>
-            <ul>
-              <li class="list-my-bookings" id="rightCard">
-
-              </li>
+            <ul class="list-my-bookings" id="rightCard">
             </ul>
           </article>
         </div>
@@ -86,15 +71,15 @@
           <p class="calendar-text">Choose Day:</p>
           <nav role="navigation hidden" id="calendar">
             <label for="bookingStartDate">Start Date:</label>
-            <input type="date" id="bookingStartDate" name="booking start date" min="${dayjs().format('YYYY-MM-DD')}">`;
+            <input class="calendar-input" type="date" id="bookingStartDate" name="booking start date" min="${dayjs().format('YYYY-MM-DD')}">`;
           </nav>
         </article>
         <article class="filter-by-room">
           <p class="filter-text">Filter by Room Type</p>
           <nav role="navigation hidden" id="filtered">
             <ul>
-              <li><a href="#">Filter By Room Type</a>
-                <ul class="dropdown">
+              <li><a href="#">Room Type</a>
+                <ul class="dropdown" >
                   <li id="filteredListItem"><a href="#">Single Room</a></li>
                   <li id="filteredListItem"><a href="#">Suite</a></li>
                   <li id="filteredListItem"><a href="#">Junior Suite</a></li>
@@ -106,8 +91,9 @@
         </article>
         <p class="available-rooms-text">AVAILABLE ROOMS:</p>
       </div>
+      <button class="confirm-button hidden" id="confirmButton">Your booking has been WRITTEN IN STONE *smile*</button>
       <button class="check-availability hidden" id="checkAvailability">Check Availability</button>
-      <article class="available-rooms hidden" id="availableRooms">
+      <article class="available-rooms" id="availableRooms">
       </article>
     </section>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.7/dayjs.min.js"></script>
