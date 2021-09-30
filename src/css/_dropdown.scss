@@ -9,6 +9,7 @@ li {
 
 ul {
   li {
+    
     ul {
       visibility: hidden;
       opacity: 0;
@@ -49,9 +50,29 @@ ul {
 }
 
 .dropdown {
+  padding: 0px 0px 0px 0px;
+  display: flex;
+  justify-content: center;
+  font-size: 19px;
+  font-family: "Quintessential", cursive;
+  margin-left: 153px;
+  margin-top: 25px;
   background-color: #FFF;
 }
 
 .checked {
   background-color: pink;
+}
+
+.filter-text {
+  display: flex;
+  justify-content: center;
+  font-size: 27px;
+  font-family: "Quintessential", cursive;
+}
+
+#filteredListItem {
+  display: flex;
+  justify-content: center;
+  font-size: 17px;
 }
