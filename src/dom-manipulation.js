@@ -38,8 +38,7 @@ function displayPatronDashboard__createSelectorAndListener(patron, roomRepo) {
   displayPatronDashboard__displayLeftCard(patron, roomRepo);
 };
 
-function displayPatronDashboard__displayLeftCard(patron, roomRepo)
- {
+function displayPatronDashboard__displayLeftCard(patron, roomRepo) {
   leftCard.innerHTML = '<p class="outer-text">My Past <a class="inner-text">(yet present, cause I\'m still here)</a> Bookings:</p>';
   patron.bookings.forEach(booking => {
     leftCard.innerHTML += `
@@ -52,10 +51,11 @@ function displayPatronDashboard__displayLeftCard(patron, roomRepo)
 
 function displayPatronDashboard__displayRightCard(patron, roomRepo) {
   rightCard.innerHTML = '<p class="outer-text">My Present Bookings:</p>';
-  patron.upcoming.forEach(upcoming => {
+
+  patron.upcoming.forEach(upcomingly => {
     rightCard.innerHTML += `
-      <p>Date: ${upcoming.date}</p>
-      <p>Room: ${upcoming.room}</p>`;
+      <p>Date: ${upcomingly.date}</p>
+      <p>Room: ${upcomingly.roomNumber}</p>`;
   })
 
   displayPatronDashboard__displayBottomCard(patron, roomRepo);
@@ -65,8 +65,8 @@ function displayPatronDashboard__displayBottomCard(patron, roomRepo) {
   show(bottomCard);
   show(bottomCardBottom);
   topCard.classList.toggle('top-card__top-alt');
-  midCardLeft.classList.toggle('mid-card__left-alt')
-  midCardRight.classList.toggle('mid-card__right-alt')
+  midCardLeft.classList.toggle('mid-card__left-alt');
+  midCardRight.classList.toggle('mid-card__right-alt');
   bottomCardBottom.innerHTML = `
     <article class="cost-assessment">
       <p class="total-cost">Total Social Clout Represented in USD (cause it's so #HIP and #JIVE to stay here!):</p>
@@ -80,8 +80,10 @@ function displayNewBookingView__switchView() {
   hide(main);
   show(checkAvailability);
   show(chooseBookingOptions);
+  show(calendar)
+  show(filtered)
 
-  displayNewBookingView__calendarView();
+  // displayNewBookingView__calendarView();
 };
 
 function displayNewBookingView__calendarView() {
@@ -236,11 +238,22 @@ let domManipulation = {
     ele.classList.toggle('checked');
   },
 
+  displayNewBookingView__switchView() {
+    hide(main);
+    show(checkAvailability);
+    show(chooseBookingOptions);
+    show(calendar)
+    show(filtered)
+
+    // displayNewBookingView__calendarView();
+  },
+
   usernameField,
   passwordField,
   submitLoginInfo,
   patronLoginButton,
-  checkAvailability
+  checkAvailability,
+  newBookingButton
 }
 
 export default domManipulation;
