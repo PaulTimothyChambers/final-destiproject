@@ -15,8 +15,42 @@
   font-size: 26px;
 }
 
+.create-new-booking-text {
+  display: flex;
+  justify-content: center;
+  font-size: 52px;
+  font-family: "Quintessential", cursive;
+}
+
+.calendar-text {
+  display: flex;
+  justify-content: center;
+  font-size: 33px;
+  font-family: "Quintessential", cursive;
+}
+
+.calendar-input {
+  display: flex;
+  justify-content: center;
+  font-size: 17px;
+  margin-left: 222px;
+}
+
+.calendar-label {
+  display: flex;
+  justify-content: center;
+  font-size: 20px;
+  font-family: "Quintessential", cursive;
+}
+
 .wink-wink {
   font-size: 9px;
+}
+
+.check-availability {
+  display: flex;
+  position: absolute;
+  margin: 494px 0px 0px 230px;
 }
 
 .top-card__top,
@@ -54,7 +88,7 @@
     height: 40vh;
     width: 72vw;
     border-radius: 15px;
-    opacity: 45%;
+    opacity: 15%;
   }
 }
 
@@ -97,7 +131,7 @@
     height: 40vh;
     width: 32.4vw;
     border-radius: 15px;
-    opacity: 25%;
+    opacity: 15%;
   }
 
   &__text-one,
@@ -141,7 +175,7 @@
     height: 40vh;
     width: 32.4vw;
     border-radius: 15px;
-    opacity: 25%;
+    opacity: 15%;
   }
 
   &__text-one {
@@ -159,4 +193,40 @@
 
 .tiny-words {
   font-size: 5px;
+}
+
+.welcome-image {
+  height: 670px;
+  position: absolute;
+  opacity: 100%;
+  z-index: -1;
+}
+
+.available-rooms-card {
+  display: flex;
+  justify-content: center;
+  font-size: 22px;
+  font-family: "Quintessential", cursive;
+  border: 3px solid;
+  border-radius: 35px;
+  background-color: brown;
+  color: cornsilk;
+  padding: 15px;
+  width: 714px;
+}
+
+.available-rooms-text {
+  display: flex;
+  justify-content: center;
+  font-size: 31px;
+  font-family: "Quintessential", cursive;
+  margin-top: 146px;
+}
+
+.submit-booking-button {
+  height: 56px;
+  font-size: 16px;
+  background-color: cadetblue;
+  color: floralwhite;
+  border-radius: 33px;
 }

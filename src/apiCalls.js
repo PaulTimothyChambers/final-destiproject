@@ -1,4 +1,4 @@
-const apiEndpoint = 'http://localhost:3009';
+const apiEndpoint = 'http://localhost:3001';
 
 function getAllPermanentPatrons() {
   return fetch(`${apiEndpoint}/api/v1/customers`)
@@ -29,13 +29,15 @@ function getAllBookings() {
 }
 
 function addNewVictIMeanClient(newVictim, patron) {
+  console.log(newVictim)
+  console.log(patron)
   return fetch(`${apiEndpoint}/api/v1/bookings`, {
     method: 'POST',
     body: JSON.stringify(newVictim),
     headers: { 'Content-Type': 'application/json' }
   })
   .then(response => checkResponse(response))
-  .then(data => patron.upcoming.push({date: data.newBooking.date, room: data.newBooking.roomNumber}))
+  .then(data => data)
   .catch(error => console.log(error))
 }
 

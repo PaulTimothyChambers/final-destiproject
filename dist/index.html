@@ -33,6 +33,7 @@
           <p class="top-card__intro-text-one">HOTEL CALIFORNIA</p>
           <p class="top-card__intro-text-two">when you stay here, you STAY here</p>
         </article>
+        <button class="new-booking-button hidden" id="newBookingButton">Make "New" Booking<a class="wink-wink">*wink* *wink*</a></button>
       </section>
       <section class="mid-card">
         <div class="mid-card__left" id="midCardLeft">
@@ -62,22 +63,36 @@
       </section>
     </main>
     <section class="new-booking" id="newBooking">
+      <img class="spooky=girl-like-you" src="./images/patron.png" alt="">
       <div class="choose-booking-options hidden" id="chooseBookingOptions">
         <p class="date-error-message hidden" id="dateErrorMessage">Please select a date you would like to book a room for</p>
         <p class="no-dates-text hidden" id="noDatesAvailableApologyMessage">Oh my! The rooms you are looking for are fully booked that day! We suggest that you adjust your expectations and try again (and since we'll be spending a LOT OF TIME TOGETHER, you should probably take our advice).</p>
         <p class="create-new-booking-text">CREATE "NEW" BOOKING</p>
         <article class="calender">
           <p class="calendar-text">Choose Day:</p>
-          <nav role="navigation" id="calendar">
+          <nav role="navigation hidden" id="calendar">
+            <label for="bookingStartDate">Start Date:</label>
+            <input class="calendar-input" type="date" id="bookingStartDate" name="booking start date" min="${dayjs().format('YYYY-MM-DD')}">`;
           </nav>
         </article>
         <article class="filter-by-room">
           <p class="filter-text">Filter by Room Type</p>
-          <nav role="navigation" id="filtered">
+          <nav role="navigation hidden" id="filtered">
+            <ul>
+              <li><a href="#">Room Type</a>
+                <ul class="dropdown" >
+                  <li id="filteredListItem"><a href="#">Single Room</a></li>
+                  <li id="filteredListItem"><a href="#">Suite</a></li>
+                  <li id="filteredListItem"><a href="#">Junior Suite</a></li>
+                  <li id="filteredListItem"><a href="#">Residential Suite</a></li>
+                </ul>
+              </li>
+            </ul>
           </nav>
         </article>
         <p class="available-rooms-text">AVAILABLE ROOMS:</p>
       </div>
+      <button class="confirm-button hidden" id="confirmButton">Your booking has been WRITTEN IN STONE *smile*</button>
       <button class="check-availability hidden" id="checkAvailability">Check Availability</button>
       <article class="available-rooms" id="availableRooms">
       </article>
